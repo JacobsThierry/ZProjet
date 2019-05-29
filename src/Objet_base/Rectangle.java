@@ -97,7 +97,7 @@ public class Rectangle extends Triangle{
 		
 	}
 	
-	public Objet_Geometrique dupliquer() { 
+	public Rectangle dupliquer() { 
 		return new Rectangle(this.getPOrigine(), this.getP1(), this.getP2(), this.p3); 
 		}
 	

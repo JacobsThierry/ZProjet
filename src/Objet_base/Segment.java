@@ -111,7 +111,7 @@ public void setP1(Point2D p1) {
 }
 
 	@Override
-	public Objet_Geometrique dupliquer() {
+	public Segment dupliquer() {
 		return new Segment(this.getPOrigine(), this.getP1());
 	}
 

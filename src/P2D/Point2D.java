@@ -63,7 +63,7 @@ public class Point2D implements Objet_Geometrique{
 		return false;
 	}
 	@Override
-	public Objet_Geometrique dupliquer() {
+	public Point2D dupliquer() {
 		return new Point2D(this.x, this.y);
 	}
 	@Override

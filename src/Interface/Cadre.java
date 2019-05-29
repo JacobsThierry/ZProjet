@@ -259,11 +259,14 @@ public void updateJTree() {
 	
 	for(int i =0; i< arr.size(); i++) {
 		racine1.add(arr.get(i).getNode());
-		System.out.println(i);
 	}
 
 	monArbre1 = new JTree(racine1);
 	monArbre1.setPreferredSize(new Dimension(pantree.getWidth()- 20,pantree.getHeight()));
+	
+	for(int i=0; i< monArbre1.getRowCount();i++) {
+		monArbre1.expandRow(i);
+	}
 	
 	Scrollp = new JScrollPane(monArbre1);
 	

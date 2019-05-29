@@ -88,7 +88,7 @@ public class Triangle extends Segment{
 		return(cmpt == 1);
 	}
 	
-	public Objet_Geometrique dupliquer() {
+	public Triangle dupliquer() {
 		return new Triangle(this.getPOrigine(), this.getP1(), this.p2);
 	}
 	public Objet_Geometrique applquerVecteur(Vecteur2D v) {
