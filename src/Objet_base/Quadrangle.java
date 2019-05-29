@@ -54,4 +54,16 @@ public DefaultMutableTreeNode getNode() {
 	
 }
 
+public DefaultMutableTreeNode getNode(String nom) {
+	DefaultMutableTreeNode node = new DefaultMutableTreeNode(nom);
+	node.add(this.getPOrigine().getNode("Po"));
+	node.add(this.getP1().getNode("P1"));
+	node.add(this.getP2().getNode("P2"));
+	node.add(this.getP3().getNode("P3"));
+	node.add(this.getP4().getNode("P4"));
+	node.add(new DefaultMutableTreeNode("rayon =" + this.rayon));
+	return node;
+	
+}
+
 }

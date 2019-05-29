@@ -130,7 +130,13 @@ public DefaultMutableTreeNode getNode() {
 	return node;
 	
 }
+public DefaultMutableTreeNode getNode(String nom) {
+	DefaultMutableTreeNode node = new DefaultMutableTreeNode(nom);
+	node.add(this.getPOrigine().getNode("Po"));
+	node.add(this.getP1().getNode("P1"));
+	return node;
 	
+}
 	
 
 }
