@@ -68,8 +68,17 @@ public class Point2D implements Objet_Geometrique{
 	}
 	@Override
 	public DefaultMutableTreeNode getNode() {
-		// TODO Auto-generated method stub
-		return null;
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode("Point");
+		node.add(new DefaultMutableTreeNode( "x = " +getX()));
+		node.add(new DefaultMutableTreeNode( "y = " +getY()));
+		return node;	
+	}
+	
+	public DefaultMutableTreeNode getNode(String nom) {
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode(nom);
+		node.add(new DefaultMutableTreeNode( "x = " +getX()));
+		node.add(new DefaultMutableTreeNode( "y = " +getY()));
+		return node;	
 	}
 	
 }

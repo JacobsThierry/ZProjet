@@ -1,6 +1,8 @@
 package Objet_base;
 import java.awt.Graphics;
 
+import javax.swing.tree.DefaultMutableTreeNode;
+
 import P2D.Point2D;
 import P2D.Vecteur2D;
 
@@ -37,6 +39,19 @@ public void deplacer(Vecteur2D v) {
 public boolean isIn(Point2D p) {
 	// TODO Auto-generated method stub
 	return false;
+}
+
+@Override
+public DefaultMutableTreeNode getNode() {
+	DefaultMutableTreeNode node = new DefaultMutableTreeNode("Quadrangle");
+	node.add(this.getPOrigine().getNode("Po"));
+	node.add(this.getP1().getNode("P1"));
+	node.add(this.getP2().getNode("P2"));
+	node.add(this.getP3().getNode("P3"));
+	node.add(this.getP4().getNode("P4"));
+	node.add(new DefaultMutableTreeNode("rayon =" + this.rayon));
+	return node;
+	
 }
 
 }

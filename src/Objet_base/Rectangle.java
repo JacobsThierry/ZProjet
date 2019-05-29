@@ -1,6 +1,8 @@
 package Objet_base;
 import java.awt.Graphics;
 
+import javax.swing.tree.DefaultMutableTreeNode;
+
 import P2D.Point2D;
 import P2D.Vecteur2D;
 
@@ -98,5 +100,17 @@ public class Rectangle extends Triangle{
 	public Objet_Geometrique dupliquer() { 
 		return new Rectangle(this.getPOrigine(), this.getP1(), this.getP2(), this.p3); 
 		}
+	
+
+@Override
+public DefaultMutableTreeNode getNode() {
+	DefaultMutableTreeNode node = new DefaultMutableTreeNode("Rectangle");
+	node.add(this.getPOrigine().getNode("Po"));
+	node.add(this.getP1().getNode("P1"));
+	node.add(this.getP2().getNode("P2"));
+	node.add(this.getP3().getNode("P3"));
+	return node;
+	
+}
 
 }

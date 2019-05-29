@@ -1,6 +1,8 @@
 package Objet_base;
 import java.awt.Graphics;
 
+import javax.swing.tree.DefaultMutableTreeNode;
+
 import P2D.Point2D;
 import P2D.Vecteur2D;
 
@@ -92,5 +94,16 @@ public class Triangle extends Segment{
 	public Objet_Geometrique applquerVecteur(Vecteur2D v) {
 		return new Triangle(this.getPOrigine().appliquerVecteur(v), this.getP1().appliquerVecteur(v), this.p2.appliquerVecteur(v));
 	}
+	
+	@Override
+	public DefaultMutableTreeNode getNode() {
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode("triangle");
+		node.add(this.getPOrigine().getNode("Po"));
+		node.add(this.getP1().getNode("P1"));
+		node.add(this.getP2().getNode("P2"));
+		return node;
+		
+	}
+		
 	
 }

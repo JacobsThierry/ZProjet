@@ -59,10 +59,7 @@ public Objet_Geometrique appliquerVecteur(Vecteur2D v) {
 @Override
 public DefaultMutableTreeNode getNode() {
 	DefaultMutableTreeNode node = new DefaultMutableTreeNode("Cercle");
-	DefaultMutableTreeNode node1 = new DefaultMutableTreeNode("Po");
-	node1.add(new DefaultMutableTreeNode( "x = " +this.getPOrigine().getX()));
-	node1.add(new DefaultMutableTreeNode( "y = " +this.getPOrigine().getY()));
-	node.add(node1);
+	node.add(this.getPOrigine().getNode("Po"));
 	node.add(new DefaultMutableTreeNode("rayon =" + this.rayon));
 	return node;
 	

@@ -120,13 +120,16 @@ public void setP1(Point2D p1) {
 		return new Segment(this.getPOrigine().appliquerVecteur(v), this.getP1().appliquerVecteur(v));
 	}
 
-	@Override
-	public DefaultMutableTreeNode getNode() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 
+@Override
+public DefaultMutableTreeNode getNode() {
+	DefaultMutableTreeNode node = new DefaultMutableTreeNode("Segment");
+	node.add(this.getPOrigine().getNode("Po"));
+	node.add(this.getP1().getNode("P1"));
+	return node;
+	
+}
 	
 	
 

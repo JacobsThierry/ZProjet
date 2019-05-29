@@ -245,7 +245,7 @@ public class Sourie  implements MouseListener, MouseMotionListener{
 
 			}
 			
-			ca.repaint();
+			
 		}
 		
 		
@@ -253,7 +253,7 @@ public class Sourie  implements MouseListener, MouseMotionListener{
 			this.PExtremite.setX(m.getX());
 			this.PExtremite.setY(m.getY());
 			ca.getPreview().set(0,new Segment(this.POrigin, this.PExtremite));
-			ca.repaint();
+			
 			
 		}
 		
@@ -261,19 +261,19 @@ public class Sourie  implements MouseListener, MouseMotionListener{
 			this.PExtremite.setX(m.getX());
 			this.PExtremite.setY(m.getY());
 			ca.getPreview().set(0,new Cercle(new Point2D(POrigin.getX(), POrigin.getY()), (int) Objet_de_base.dist(this.POrigin, this.PExtremite)));
-			ca.repaint();
+			
 			
 		}
 		
 		if(ca.getMode()==14) {
 			ca.getPreview().set(0,new Point2D(m.getX(), m.getY()));
-			ca.repaint();
+			
 		}
 		
 		
 		
 		
-		
+		ca.repaint();
 		
 	}
 	}
