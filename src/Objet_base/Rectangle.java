@@ -54,6 +54,10 @@ public class Rectangle extends Triangle{
 		
 	}
 	
+	public Rectangle appliquerVecteur(Vecteur2D v) {
+		return new Rectangle(this.getPOrigine().appliquerVecteur(v), this.getP1().appliquerVecteur(v), this.getP2().appliquerVecteur(v), this.getP3().appliquerVecteur(v));
+	}
+	
 	@Override
 	public boolean isIn(Point2D p) {
 		int cmpt=0;

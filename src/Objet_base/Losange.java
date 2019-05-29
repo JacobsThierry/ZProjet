@@ -13,7 +13,6 @@ private Point2D p4;
 public Losange(Point2D pOrigine, Point2D p1, Point2D p2, Point2D p3, Point2D p4) {
 	super(pOrigine, p1, p2, p3);
 	this.p4 = p4;
-	//TODO faire le constructeur
 }
 
 public Losange(Segment s, int longeur) {
@@ -56,15 +55,65 @@ public void afficher(Graphics g) {
 
 @Override
 public void deplacer(Vecteur2D v) {
-	// TODO Auto-generated method stub
+	this.setPOrigine(this.getPOrigine().appliquerVecteur(v));
+	this.setP1(this.getP1().appliquerVecteur(v));
+	this.setP2(this.getP2().appliquerVecteur(v)); 
+	this.setP3(this.getP3().appliquerVecteur(v));
+	this.setP4(this.p4.appliquerVecteur(v));
 	
+}
+@Override
+public Losange appliquerVecteur(Vecteur2D v) {
+	return new Losange(this.getPOrigine().appliquerVecteur(v), this.getP1().appliquerVecteur(v), this.getP2().appliquerVecteur(v), this.getP3().appliquerVecteur(v), this.getP4().appliquerVecteur(v));
+}
+@Override
+public Losange dupliquer() {
+	return new Losange(this.getPOrigine(), this.getP1(), this.getP2(), this.getP3(), this.p4);
 }
 
 @Override
-public boolean isIn(Point2D p) {
-	// TODO Auto-generated method stub
-	return false;
+public boolean isIn(Point2D p) { //TODO : fixe le is IN
+	int cmpt=0;
+	int x = p.getX();
+	int y = p.getY();
+	boolean woah1 = true;
+	boolean woah2 = true;
+	boolean woah3 = true;
+	boolean woah4 = true;
+	for(int i=x;i<1920;i++) {
+		
+		
+		
+		if((Objet_de_base.dist(this.getP1(),p)+Objet_de_base.dist(this.getP2(),p)==Objet_de_base.dist(this.getPOrigine(),this.getP1())) && woah1) {
+			cmpt++;
+			woah1 = (1==2);
+			
+	}
+		if((Objet_de_base.dist(this.getP1(),p)+Objet_de_base.dist(this.getP3(),p)==Objet_de_base.dist(this.getPOrigine(),this.getP2())) && woah2) {
+			cmpt++;
+			woah2 = (1==2);
+			
+	}
+		if((Objet_de_base.dist(this.getP2(),p)+Objet_de_base.dist(this.getP4(),p)==Objet_de_base.dist(this.getP1(),this.getP3())) && woah3) {
+			cmpt++;
+			woah3 = false;
+			
+		}
+		if((Objet_de_base.dist(this.getP3(),p)+Objet_de_base.dist(this.getP4(),p)==Objet_de_base.dist(this.getP2(),this.getP3())) && woah4) {
+			cmpt++;
+			woah4 = false;
+			System.out.println("wo");
+		}
+		p.setX(i);
+		
+	
+
+
 }
+	return(cmpt==1);
+	
+}
+
 
 @Override
 public DefaultMutableTreeNode getNode() {
@@ -78,7 +127,7 @@ public DefaultMutableTreeNode getNode() {
 	return node;
 	
 }
-
+@Override
 public DefaultMutableTreeNode getNode(String nom) {
 	DefaultMutableTreeNode node = new DefaultMutableTreeNode(nom);
 	node.add(this.getPOrigine().getNode("Po"));
