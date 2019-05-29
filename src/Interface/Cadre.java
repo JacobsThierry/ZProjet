@@ -7,6 +7,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.ScrollPane;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -15,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 import javax.swing.JTree;
 import javax.swing.SwingConstants;
@@ -72,6 +74,8 @@ public class Cadre extends JFrame{
 	private ArrayList<Objet_Geometrique> preview;
 	
 	private JTree monArbre1;
+	
+	private JScrollPane Scrollp;
 	
 
 	
@@ -201,17 +205,24 @@ public Cadre() {
 	this.setLayout(new BorderLayout());
 	this.add(panbtn, BorderLayout.NORTH);
 	
-	DefaultMutableTreeNode racine1 = new DefaultMutableTreeNode("Canevas");
-	
 	pantree = new JPanel();
 	pantree.setPreferredSize(new Dimension(200,200));
 	
+	DefaultMutableTreeNode racine1 = new DefaultMutableTreeNode("Canevas");
 	
 	this.add(pantree, BorderLayout.EAST);
 	
+
 	monArbre1 = new JTree(racine1);
-	monArbre1.setPreferredSize(new Dimension(200,9999999));
-	pantree.add(monArbre1);
+	monArbre1.setPreferredSize(new Dimension(180,9999));
+	
+	Scrollp = new JScrollPane(monArbre1);
+	
+	
+	pantree.add(Scrollp);
+	
+	
+	
 	
 	this.addMouseListener(list);
 	this.addMouseMotionListener(list);
@@ -238,7 +249,10 @@ public Cadre() {
 
 public void updateJTree() {
 	
-	this.pantree.remove(monArbre1);
+	
+
+		this.pantree.remove(Scrollp);
+
 	
 	DefaultMutableTreeNode racine1 = new DefaultMutableTreeNode("Canevas");
 	
@@ -247,11 +261,13 @@ public void updateJTree() {
 		racine1.add(arr.get(i).getNode());
 		System.out.println(i);
 	}
-	
-	
+
 	monArbre1 = new JTree(racine1);
-	monArbre1.setPreferredSize(new Dimension(200,pantree.getHeight()));
-	pantree.add(monArbre1);
+	monArbre1.setPreferredSize(new Dimension(pantree.getWidth()- 20,pantree.getHeight()));
+	
+	Scrollp = new JScrollPane(monArbre1);
+	
+	pantree.add(Scrollp);
 	
 		
 	
