@@ -33,27 +33,26 @@ public void setRayon(int rayon) {
 
 @Override
 public void deplacer(Vecteur2D v) {
-	// TODO Auto-generated method stub
+	this.setPOrigine(this.getPOrigine().appliquerVecteur(v));
 	
 }
 
 @Override
 public boolean isIn(Point2D p) {
-	// TODO Auto-generated method stub
+	if( Objet_de_base.dist(this.getPOrigine(), p) < rayon ) return true;
 	return false;
 }
 
 
 @Override
-public Objet_Geometrique dupliquer() {
+public Cercle dupliquer() {
 	return new Cercle(this.getPOrigine(), this.rayon);
 }
 
 
 @Override
-public Objet_Geometrique appliquerVecteur(Vecteur2D v) {
-	// TODO Auto-generated method stub
-	return null;
+public Cercle appliquerVecteur(Vecteur2D v) {
+	return new Cercle(this.getPOrigine().appliquerVecteur(v), this.rayon);
 }
 
 @Override
