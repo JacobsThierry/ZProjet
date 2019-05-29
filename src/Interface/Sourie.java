@@ -68,6 +68,7 @@ public class Sourie  implements MouseListener, MouseMotionListener{
 	public void mousePressed(MouseEvent m) {
 		int x = m.getX();
 		int y = m.getY();
+		
 		arrabouger = new ArrayList<Objet_Geometrique>();
 				
 		if(m.getY() >= ca.getPanbtn().getHeight() * 1.3) {
@@ -93,6 +94,7 @@ public class Sourie  implements MouseListener, MouseMotionListener{
 					this.mode = 1;}
 				else if(this.mode == 1) {
 					ca.getArr().add(ca.getPreview().get(0));
+					
 					this.mode = 0;
 					this.POrigin = new Point2D(m.getX(), m.getY());
 					this.PExtremite = new Point2D(m.getX(), m.getY());

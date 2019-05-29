@@ -1,6 +1,7 @@
 package Objet_base;
 import java.awt.Graphics;
-import java.math.*;
+
+import javax.swing.tree.DefaultMutableTreeNode;
 
 import P2D.Point2D;
 public abstract class Objet_de_base implements Objet_Geometrique{
@@ -26,6 +27,8 @@ public abstract class Objet_de_base implements Objet_Geometrique{
 	}
 	
 	public abstract void afficher(Graphics g);
+	
+	
 	
 	
 }

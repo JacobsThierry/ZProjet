@@ -3,6 +3,8 @@ package Objet_base;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
+import javax.swing.tree.DefaultMutableTreeNode;
+
 import P2D.Point2D;
 import P2D.Vecteur2D;
 
@@ -54,6 +56,12 @@ public class Multisegment extends Objet_de_base{
 	public void afficher(Graphics g) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public DefaultMutableTreeNode getNode() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

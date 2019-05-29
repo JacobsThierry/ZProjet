@@ -1,6 +1,8 @@
 package Objet_base;
 import java.awt.Graphics;
 
+import javax.swing.tree.DefaultMutableTreeNode;
+
 import P2D.Point2D;
 import P2D.Vecteur2D;
 
@@ -116,6 +118,12 @@ public void setP1(Point2D p1) {
 	@Override
 	public Objet_Geometrique appliquerVecteur(Vecteur2D v) {
 		return new Segment(this.getPOrigine().appliquerVecteur(v), this.getP1().appliquerVecteur(v));
+	}
+
+	@Override
+	public DefaultMutableTreeNode getNode() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

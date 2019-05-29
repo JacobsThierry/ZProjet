@@ -1,6 +1,8 @@
 package Objet_base;
 import java.awt.Graphics;
 
+import javax.swing.tree.DefaultMutableTreeNode;
+
 import P2D.Point2D;
 import P2D.Vecteur2D;
 
@@ -52,6 +54,18 @@ public Objet_Geometrique dupliquer() {
 public Objet_Geometrique appliquerVecteur(Vecteur2D v) {
 	// TODO Auto-generated method stub
 	return null;
+}
+
+@Override
+public DefaultMutableTreeNode getNode() {
+	DefaultMutableTreeNode node = new DefaultMutableTreeNode("Cercle");
+	DefaultMutableTreeNode node1 = new DefaultMutableTreeNode("Po");
+	node1.add(new DefaultMutableTreeNode( "x = " +this.getPOrigine().getX()));
+	node1.add(new DefaultMutableTreeNode( "y = " +this.getPOrigine().getY()));
+	node.add(node1);
+	node.add(new DefaultMutableTreeNode("rayon =" + this.rayon));
+	return node;
+	
 }
 
 }

@@ -10,16 +10,18 @@ import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Hashtable;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
+import javax.swing.JTree;
 import javax.swing.SwingConstants;
+import javax.swing.tree.DefaultMutableTreeNode;
 
-
+import Objet_base.Cercle;
 import Objet_base.Objet_Geometrique;
-
 import P2D.Point2D;
 import P2D.Vecteur2D;
 
@@ -59,6 +61,7 @@ public class Cadre extends JFrame{
 	
 	private JPanel panbtn;
 	private JPanel panslider;
+	private JPanel pantree;
 	
 	private int index;
 	
@@ -67,6 +70,8 @@ public class Cadre extends JFrame{
 	private ArrayList<Objet_Geometrique> arr;
 	
 	private ArrayList<Objet_Geometrique> preview;
+	
+	private JTree monArbre1;
 	
 
 	
@@ -196,10 +201,25 @@ public Cadre() {
 	this.setLayout(new BorderLayout());
 	this.add(panbtn, BorderLayout.NORTH);
 	
+	DefaultMutableTreeNode racine1 = new DefaultMutableTreeNode("Canevas");
+	
+	pantree = new JPanel();
+	pantree.setPreferredSize(new Dimension(200,200));
+	
+	this.add(pantree, BorderLayout.EAST);
+	
+	monArbre1 = new JTree(racine1);
+	monArbre1.setPreferredSize(new Dimension(200,200));
+	pantree.add(monArbre1);
+	
 	this.addMouseListener(list);
 	this.addMouseMotionListener(list);
 	
 	
+	
+
+	
+
 	
 	this.setSize(800, 600);
 	
@@ -215,7 +235,26 @@ public Cadre() {
 }
 
 
-
+public void updateJTree() {
+	
+	this.pantree.remove(monArbre1);
+	
+	DefaultMutableTreeNode racine1 = new DefaultMutableTreeNode("Canevas");
+	
+	
+	for(int i =0; i< arr.size(); i++) {
+		racine1.add(arr.get(i).getNode());
+	}
+	
+	
+	monArbre1 = new JTree(racine1);
+	monArbre1.setPreferredSize(new Dimension(200,200));
+	pantree.add(monArbre1);
+	
+		
+	
+	
+}
 
 
 
@@ -363,7 +402,6 @@ public void setPanslider(JPanel panslider) {
 
 public void paint(Graphics g) {
 	super.paintComponents(g);
-	System.out.println(this.arr);
 	g.setColor(Color.GRAY);
 	int i;
 	
@@ -379,10 +417,10 @@ public void paint(Graphics g) {
 	for(i=0; i<arr.size();i++) {
 		arr.get(i).afficher(g);
 	}
-	
-	
+	this.updateJTree();
 	
 }
+
 
 
 
