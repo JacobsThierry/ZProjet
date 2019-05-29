@@ -206,10 +206,11 @@ public Cadre() {
 	pantree = new JPanel();
 	pantree.setPreferredSize(new Dimension(200,200));
 	
+	
 	this.add(pantree, BorderLayout.EAST);
 	
 	monArbre1 = new JTree(racine1);
-	monArbre1.setPreferredSize(new Dimension(200,200));
+	monArbre1.setPreferredSize(new Dimension(200,9999999));
 	pantree.add(monArbre1);
 	
 	this.addMouseListener(list);
@@ -244,11 +245,12 @@ public void updateJTree() {
 	
 	for(int i =0; i< arr.size(); i++) {
 		racine1.add(arr.get(i).getNode());
+		System.out.println(i);
 	}
 	
 	
 	monArbre1 = new JTree(racine1);
-	monArbre1.setPreferredSize(new Dimension(200,200));
+	monArbre1.setPreferredSize(new Dimension(200,pantree.getHeight()));
 	pantree.add(monArbre1);
 	
 		
@@ -280,7 +282,10 @@ public JLabel getL3() {
 	return l3;
 }
 
-
+public void addforme(Objet_Geometrique o1) {
+	this.arr.add(o1);
+	this.updateJTree();
+}
 
 
 
@@ -417,7 +422,7 @@ public void paint(Graphics g) {
 	for(i=0; i<arr.size();i++) {
 		arr.get(i).afficher(g);
 	}
-	this.updateJTree();
+	
 	
 }
 

@@ -1,6 +1,8 @@
 package P2D;
 import java.awt.Graphics;
 
+import javax.swing.tree.DefaultMutableTreeNode;
+
 import Objet_base.Objet_Geometrique;
 
 public class Point2D implements Objet_Geometrique{
@@ -63,6 +65,11 @@ public class Point2D implements Objet_Geometrique{
 	@Override
 	public Objet_Geometrique dupliquer() {
 		return new Point2D(this.x, this.y);
+	}
+	@Override
+	public DefaultMutableTreeNode getNode() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }
