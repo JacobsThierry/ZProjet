@@ -168,6 +168,7 @@ public class Sourie  implements MouseListener, MouseMotionListener{
 				this.arrabouger.get(i).deplacer(new Vecteur2D(this.POrigin, new Point2D(m.getX(), m.getY())));
 			}			
 			ca.cleanPreview();
+			ca.updateJTree();
 			ca.repaint();
 			
 			
