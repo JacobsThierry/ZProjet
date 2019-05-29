@@ -84,17 +84,17 @@ public boolean isIn(Point2D p) {
 		
 		
 		
-		if((Objet_de_base.dist(this.getP1(),p)+Objet_de_base.dist(this.getP2(),p)==Objet_de_base.dist(this.getP1(),this.getP2())) && woah1) {
+			if((Objet_de_base.dist(this.getP1(),p)+Objet_de_base.dist(this.getP2(),p)==Objet_de_base.dist(this.getP2(),this.getP1())) && woah1) {
 			cmpt++;
 			woah1 = (1==2);
 			
 	}
-		if((Objet_de_base.dist(this.getP1(),p)+Objet_de_base.dist(this.getP3(),p)==Objet_de_base.dist(this.getP1(),this.getP3())) && woah2) {
+		if((Objet_de_base.dist(this.getP3(),p)+Objet_de_base.dist(this.getP2(),p)==Objet_de_base.dist(this.getP3(),this.getP2())) && woah2) {
 			cmpt++;
 			woah2 = (1==2);
 			
 	}
-		if((Objet_de_base.dist(this.getP2(),p)+Objet_de_base.dist(this.getP4(),p)==Objet_de_base.dist(this.getP2(),this.getP4())) && woah3) {
+		if((Objet_de_base.dist(this.getP1(),p)+Objet_de_base.dist(this.getP4(),p)==Objet_de_base.dist(this.getP1(),this.getP4())) && woah3) {
 			cmpt++;
 			woah3 = false;
 			
@@ -102,8 +102,9 @@ public boolean isIn(Point2D p) {
 		if((Objet_de_base.dist(this.getP3(),p)+Objet_de_base.dist(this.getP4(),p)==Objet_de_base.dist(this.getP3(),this.getP4())) && woah4) {
 			cmpt++;
 			woah4 = false;
-			System.out.println("wo");
+			
 		}
+
 		p.setX(i);
 		
 	
