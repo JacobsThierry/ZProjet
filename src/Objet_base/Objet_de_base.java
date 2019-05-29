@@ -25,9 +25,7 @@ public abstract class Objet_de_base implements Objet_Geometrique{
 		
 	}
 	
-	public void afficher(Graphics g) {
-		;
-	}
+	public abstract void afficher(Graphics g);
 	
 	
 }

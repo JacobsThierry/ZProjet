@@ -1,5 +1,6 @@
 package Objet_base;
 
+import java.awt.Graphics;
 import java.util.ArrayList;
 
 import P2D.Point2D;
@@ -20,13 +21,20 @@ public class Multisegment extends Objet_de_base{
 
 	@Override
 	public void deplacer(Vecteur2D v) {
-		// TODO Auto-generated method stub
+		PO.deplacer(v);
+		for(int i=0;i<arr.size();i++) {
+			arr.get(i).deplacer(v);
+		}
 		
 	}
 
 	@Override
 	public boolean isIn(Point2D p) {
-		// TODO Auto-generated method stub
+		for(int i=0;i<arr.size();i++) {
+			if(arr.get(i).isIn(p)) {
+				return true;
+			}
+		}
 		return false;
 	}
 
@@ -40,6 +48,12 @@ public class Multisegment extends Objet_de_base{
 	public Objet_Geometrique appliquerVecteur(Vecteur2D v) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void afficher(Graphics g) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
