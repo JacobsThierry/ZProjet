@@ -128,4 +128,11 @@ public DefaultMutableTreeNode getNode(String nom) {
 	
 }
 
+@Override
+public String toString() {
+	return "2 "+this.getPOrigine().getX()+" "+this.getPOrigine().getY()+" "+this.getP1().getX()+" "+this.getP1().getY()+" "+this.getP2().getX()+" "+this.getP2().getY()+" "+this.p3.getX()+" "+this.p3.getY();
+}
+
+
+
 }
