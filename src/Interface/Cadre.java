@@ -117,24 +117,30 @@ public Cadre() {
 	b_poin = new JButton("Point");
 	this.b_delet = new JButton("Supprimer");
 	
-	
+	b_deplace.setToolTipText("Utilisez cette outil pour déplacer une forme. Cliquer sur une ou plusieurs forme, déplacez la souris, relevez le clic !");
 	b_deplace.addActionListener(lis);
 	panbtn.add(b_deplace);
 	b_quadri.addActionListener(lis);
+	b_quadri.setToolTipText("Utilisez cette outil pour crée un quadrilatère. Cliquez 4 fois pour placer les 4 points du quadrilatère !");
 	panbtn.add(b_quadri);
 	b_rect.addActionListener(lis);
 	panbtn.add(b_rect);
 	b_losange.addActionListener(lis);
+	b_losange.setToolTipText("Utilisez cette outil pour crée un losange. Cliquez 2 fois pour placer la première diagonale, puis recliquer pour choisir la longueur de la seconde diagonale.");
 	panbtn.add(b_losange);
+	b_quadrangle.setToolTipText("Utilisez cette outil pour crée un quadrangle. Commencez par tracer un cercle, puis placez 4 points sur le cercle pour crée un quadrangle.");
 	b_quadrangle.addActionListener(lis);
 	panbtn.add(b_quadrangle);
+	b_segm.setToolTipText("Utilisez cette outil pour crée un segment. Cliquer simplement aux extremités du segment.");
 	b_segm.addActionListener(lis);
 	panbtn.add(b_segm);
+	b_triangle.setToolTipText("Utilisez cette outil pour crée un triangle. CLiquer 3 fois a l'emplacement des 3 points du triangle pour le crée.");
 	b_triangle.addActionListener(lis);
 	panbtn.add(b_triangle);
 	b_multiseg.addActionListener(lis);
 	panbtn.add(b_multiseg);
 	b_cercle.addActionListener(lis);
+	b_cercle.setToolTipText("Utilisez cette outil pour crée un cercle. Cliquer en son centre, puis déplacer la souris pour choisir son rayon. Enfin, cliquer une deuxième fois pour finaliser le cercle.");
 	panbtn.add(b_cercle);
 	b_arcdec.addActionListener(lis);
 	panbtn.add(b_arcdec);
@@ -146,8 +152,10 @@ public Cadre() {
 	panbtn.add(b_multielipse);
 	b_multirectangle.addActionListener(lis);
 	panbtn.add(b_multirectangle);
+	b_poin.setToolTipText("Utilisez cette outil pour placer des points. Cliquez simplement la ou vous voulez placer un point !");
 	b_poin.addActionListener(lis);
 	panbtn.add(b_poin);
+	b_delet.setToolTipText("Supprimez toute les formes en clicant sur ce bouton !");
 	panbtn.add(this.b_delet);
 	this.b_delet.addActionListener(lis);
 	
