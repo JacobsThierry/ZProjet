@@ -19,14 +19,12 @@ public class Segment extends Objet_de_base{
 
 	public Segment(Point2D pOrigine, double angle, int longueur) {
 		super(new Point2D());
-		System.out.println(angle);
 		if(angle < Math.PI) {
 		this.setPOrigine(new Point2D( (int) (pOrigine.getX() - Math.cos(angle)* longueur/2), (int) (pOrigine.getY() + Math.sin(angle) * longueur/2 )));
 		this.p1 = new Point2D( (int) (pOrigine.getX() + Math.cos(angle)* longueur/2), (int) (pOrigine.getY() - Math.sin(angle) * longueur/2 ) );
 		}
 		else
 		{
-			System.out.println("issou");
 			this.setPOrigine(new Point2D( (int) (pOrigine.getX() - Math.cos(angle)* longueur/2), (int) (pOrigine.getY() + Math.sin(angle) * longueur/2 ) ));
 			this.p1 = new Point2D( (int) (pOrigine.getX() + Math.cos(angle)* longueur/2), (int) (pOrigine.getY() - Math.sin(angle) * longueur/2 ));
 		}
