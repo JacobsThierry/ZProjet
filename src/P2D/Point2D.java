@@ -24,7 +24,7 @@ public class Point2D implements Objet_Geometrique{
 	}
 	@Override
 	public String toString() {
-		return "Point2D [x=" + x + ", y=" + y + ", longe=" + longe + "]";
+		return "14 "+this.x+" "+this.y;
 	}
 	public int getX() {
 		return x;
