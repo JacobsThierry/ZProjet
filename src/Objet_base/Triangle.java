@@ -39,9 +39,10 @@ public class Triangle extends Segment{
 	}
 
 	@Override
-	public String toString() {
-		return "Triangle [p2=" + p2 + "po = " + this.getPOrigine() + "p1 = " + this.getP1() + "]";
+		public String toString() {
+		return "6 "+this.getPOrigine().getX()+" "+this.getPOrigine().getY()+" "+this.getP1().getX()+" "+this.getP1().getY()+" "+this.getP2().getX()+" "+this.getP2().getY();
 	}
+
 
 	@Override
 	public void deplacer(Vecteur2D v) {
