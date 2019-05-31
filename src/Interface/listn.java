@@ -11,7 +11,11 @@ import java.util.Scanner;
 import Objet_base.Rectangle;
 import Objet_base.Objet_Geometrique;
 import P2D.Point2D;
-
+import Objet_base.Cercle;
+import Objet_base.Quadrangle;
+import Objet_base.Losange;
+import Objet_base.Segment;
+import Objet_base.Triangle;
 
 public class listn implements ActionListener {
 	
