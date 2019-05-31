@@ -23,10 +23,6 @@ public Losange(Segment s, int longeur) {
 }
 
 
-@Override
-public String toString() {
-	return "Losange [p4=" + p4 + "]";
-}
 
 public Point2D getP4() {
 	return p4;
