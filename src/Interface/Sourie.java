@@ -21,6 +21,7 @@ public class Sourie  implements MouseListener, MouseMotionListener{
 	private Point2D PExtremite;
 	private Point2D P1;
 	private Point2D P2;
+	private Point2D PC;
 	private boolean a=true;
 	private int mode;
 	private boolean test;
