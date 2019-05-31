@@ -135,6 +135,9 @@ public DefaultMutableTreeNode getNode(String nom) {
 	return node;
 	
 }
+	public String toString() {
+	return "5 "+this.getPOrigine().getX()+" "+this.getPOrigine().getY()+" "+this.getP1().getX()+" "+this.getP1().getY();
+}
 	
 
 }
