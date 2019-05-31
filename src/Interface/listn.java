@@ -100,12 +100,32 @@ public class listn implements ActionListener {
 			 try
 		        {
 				 Scanner sc=new Scanner(file);
+				 while(sc.hasNextInt()) {
 		         int id = sc.nextInt();
-		         if(id==2) {
-		        	 
+		    
+		         if(id==2) {		        	 
 		        	 ca.getArr().add(new Rectangle(new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt())));
 		         }
+		         if(id==3) {
+		        	 ca.getArr().add(new Losange(new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt())));
+		         }
+		         if(id==4) {
+		        	 ca.getArr().add(new Quadrangle(new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),sc.nextInt()));
+		         }
+		         if(id==5) {
+		        	 ca.getArr().add(new Segment(new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt())));
+		         }
+		         if(id==6) {
+		        	 ca.getArr().add(new Triangle(new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt())) );
+		         }
+		         if(id==8) {
+		        	 ca.getArr().add(new Cercle(new Point2D(sc.nextInt(),sc.nextInt()),sc.nextInt()));
+		         }
+		         if(id==14) {
+		        	 ca.getArr().add(new Point2D(sc.nextInt(),sc.nextInt()));
+		         }
 		        }
+				 }
 			 catch (FileNotFoundException e)
 		        {
 		            e.printStackTrace();
