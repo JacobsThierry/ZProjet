@@ -21,6 +21,7 @@ public class Sourie  implements MouseListener, MouseMotionListener{
 	private Point2D PExtremite;
 	private Point2D P1;
 	private Point2D P2;
+	private boolean a=true;
 	private int mode;
 	private boolean test;
 	private ArrayList<Objet_Geometrique> arrabouger;
@@ -87,7 +88,7 @@ public class Sourie  implements MouseListener, MouseMotionListener{
 			
 			}
 			}
-			if(ca.getMode() == 5 || ca.getMode() == 8) { //on pose des points a la main si c'est un triangle ou un quadrilatère
+			if(ca.getMode() == 5 || ca.getMode() == 8) { //on pose des points a la main si c'est un triangle ou un quadrilatÃ¨re
 				if(this.mode == 0) {
 					this.POrigin = new Point2D(m.getX(), m.getY());
 					this.PExtremite = new Point2D(m.getX(), m.getY());
@@ -122,8 +123,49 @@ public class Sourie  implements MouseListener, MouseMotionListener{
 					this.reset();
 				}
 			}
-			
-			if(ca.getMode() == 1 || ca.getMode() == 6) { // si on fais un quadrilatère ou un triangle, on affiche un segment quand on a 2 points, un triangle quand on en a 3
+			if(ca.getMode()==4){
+				if(this.mode == 0) {
+					this.POrigin = new Point2D(m.getX(), m.getY());
+					this.PC=this.POrigin;
+					this.PExtremite = new Point2D(m.getX(), m.getY());
+					this.mode = 1;
+					}
+				
+				else if(this.mode == 1) {
+					this.POrigin = new Point2D(m.getX(), m.getY());
+					this.mode = 2;
+					
+				}
+				else if(this.mode == 2) {
+					System.out.println(Objet_de_base.dist(new Point2D(m.getX(), m.getY()),this.PC));
+					System.out.println((int) Objet_de_base.dist(this.PC, this.POrigin));
+					if ((Objet_de_base.dist(new Point2D(m.getX(), m.getY()),this.PC)<(int) Objet_de_base.dist(this.PC, this.POrigin)+5) && (Objet_de_base.dist(new Point2D(m.getX(), m.getY()),this.PC)>(int) Objet_de_base.dist(this.PC, this.POrigin)-5)){
+					this.P1 = new Point2D(m.getX(), m.getY());
+					this.mode = 3;}
+					
+				}
+				else if(this.mode == 3) {
+
+					if ((Objet_de_base.dist(new Point2D(m.getX(), m.getY()),this.PC)<(int) Objet_de_base.dist(this.PC, this.P1)+5) && (Objet_de_base.dist(new Point2D(m.getX(), m.getY()),this.PC)>(int) Objet_de_base.dist(this.PC, this.POrigin)-5)){
+					this.P2 = new Point2D(m.getX(), m.getY());
+					this.mode = 4;
+					}
+
+				}
+				else if(this.mode == 4) {
+					
+					if ((Objet_de_base.dist(new Point2D(m.getX(), m.getY()),this.PC)<(int) Objet_de_base.dist(this.PC, this.P1)+5) && (Objet_de_base.dist(new Point2D(m.getX(), m.getY()),this.PC)>(int) Objet_de_base.dist(this.PC, this.POrigin)-5)){
+					ca.getArr().add(ca.getPreview().get(1));
+					this.reset();}
+					
+				}
+				else if(this.mode == 5) {
+					this.PExtremite = new Point2D(m.getX(), m.getY());
+					this.mode = 4;
+					
+				}
+			}
+			if(ca.getMode() == 1 || ca.getMode() == 6) { // si on fais un quadrilatÃ¨re ou un triangle, on affiche un segment quand on a 2 points, un triangle quand on en a 3
 				if(this.mode == 0) {
 					this.POrigin = new Point2D(m.getX(), m.getY());
 					this.mode = 1;
@@ -248,7 +290,35 @@ public class Sourie  implements MouseListener, MouseMotionListener{
 			
 			
 		}
+				if(ca.getMode()==4) {
+
+			this.PExtremite.setX(m.getX());
+			this.PExtremite.setY(m.getY());
+			if (this.mode==1){
+				ca.getPreview().set(0,new Cercle(new Point2D(POrigin.getX(), POrigin.getY()), (int) Objet_de_base.dist(this.POrigin, this.PExtremite)));
+				
+			
+			}
+
+			
+		 if(this.mode==2) {
+	
+			 
+			if(a){
+						ca.getPreview().add(1,new Segment(this.POrigin, new Point2D(m.getX(), m.getY())));
+						a=false;}
+				
+					ca.getPreview().set(1,new Segment(this.POrigin, new Point2D(m.getX(), m.getY())));
 		
+			}			
+			else if(this.mode==3) {
+				ca.getPreview().set(1, new Triangle(this.POrigin, this.P1, new Point2D(m.getX(), m.getY())));
+		}
+			else if(this.mode==4){
+				ca.getPreview().set(1,new Rectangle(this.POrigin, this.P1, new Point2D(m.getX(), m.getY()), this.P2));
+			}
+			
+		}
 		
 		if(ca.getMode()==5 && this.mode == 1) {
 			this.PExtremite.setX(m.getX());
