@@ -71,5 +71,8 @@ public DefaultMutableTreeNode getNode(String nom) {
 	return node;
 	
 }
+	public String toString(){
+	return "8 "+this.getPOrigine().getX()+" "+this.getPOrigine().getY()+" "+this.getRayon();
+}
 
 }
