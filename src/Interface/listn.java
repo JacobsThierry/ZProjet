@@ -17,6 +17,7 @@ import Objet_base.Losange;
 import Objet_base.Segment;
 import Objet_base.Triangle;
 
+
 public class listn implements ActionListener {
 	
 	private Cadre ca;
@@ -60,6 +61,10 @@ public class listn implements ActionListener {
 			ca.setMode(2);
 		}
 		
+		if(source==ca.getB_quadrangle()) {
+			ca.setMode(4);
+		}
+		
 		if(source == ca.getB_losange()) {
 			ca.setMode(3);
 		}
@@ -77,6 +82,9 @@ public class listn implements ActionListener {
 		
 		if(source==ca.getB_poin() ) {
 			ca.setMode(14);
+		}
+		if(source==ca.getB_arcdec()) {
+			ca.setMode(9);
 		}
 		if(source==ca.getB_save()) {
 
