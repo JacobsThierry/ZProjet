@@ -4,6 +4,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
+import Objet_base.Arc;
 import Objet_base.Cercle;
 import Objet_base.Losange;
 import Objet_base.Objet_Geometrique;
@@ -21,9 +22,12 @@ public class Sourie  implements MouseListener, MouseMotionListener{
 	private Point2D PExtremite;
 	private Point2D P1;
 	private Point2D P2;
-	private Point2D PC;
 	private boolean a=true;
+	private Point2D PC;
+	private int haut;
+	private int larg;
 	private int mode;
+	private double angle;
 	private boolean test;
 	private ArrayList<Objet_Geometrique> arrabouger;
 
@@ -166,43 +170,62 @@ public class Sourie  implements MouseListener, MouseMotionListener{
 					
 				}
 			}
-			if(ca.getMode() == 1 || ca.getMode() == 6) { // si on fais un quadrilatère ou un triangle, on affiche un segment quand on a 2 points, un triangle quand on en a 3
-				if(this.mode == 0) {
-					this.POrigin = new Point2D(m.getX(), m.getY());
-					this.mode = 1;
-					
-				}
-				else if(this.mode == 1) {
-					this.PExtremite = new Point2D(m.getX(), m.getY());
-					this.mode = 2;
-					
-				}
-				else if(this.mode == 2) {
-					this.P1 = new Point2D(m.getX(), m.getY());
-					this.mode = 3;
-					if(ca.getMode() == 6) {
-						ca.addforme(ca.getPreview().get(0));
-						this.reset();
+
+
+
+				if(ca.getMode()==9) {
+						if(this.mode == 0) {
+				
+							this.mode++;
+						}
+						else if(this.mode == 1) {
+							this.POrigin = new Point2D(m.getX(), m.getY());
+							this.mode = 2;
+							
+						}
+						else if(this.mode == 2) {
+							ca.addforme((ca.getPreview().get(0)));
+							this.reset();
+						}
+						
 					}
+				if(ca.getMode() == 1 || ca.getMode() == 6) { // si on fais un quadrilatère ou un triangle, on affiche un segment quand on a 2 points, un triangle quand on en a 3
+					if(this.mode == 0) {
+						this.POrigin = new Point2D(m.getX(), m.getY());
+						this.mode = 1;
+						
+					}
+					else if(this.mode == 1) {
+						this.PExtremite = new Point2D(m.getX(), m.getY());
+						this.mode = 2;
+						
+					}
+					else if(this.mode == 2) {
+						this.P1 = new Point2D(m.getX(), m.getY());
+						this.mode = 3;
+						if(ca.getMode() == 6) {
+							ca.getArr().add(ca.getPreview().get(0));
+							this.reset();
+						}
+					}
+					else if(this.mode == 3) {
+						
+						
+						ca.getArr().add(ca.getPreview().get(0));
+						this.reset();
+						
+					}
+					
+					
 				}
-				else if(this.mode == 3) {
-					
-					
-					ca.addforme(ca.getPreview().get(0));
-					this.reset();
-					
-				}
-				
-				
-			}
 			if(ca.getMode()==14) {
 				ca.addforme(ca.getPreview().get(0));
 			}
 		
 		ca.repaint();
 		
-	}
-	}
+	}}
+	
 	@Override
 	public void mouseReleased(MouseEvent m) {
 		
@@ -291,7 +314,8 @@ public class Sourie  implements MouseListener, MouseMotionListener{
 			
 			
 		}
-				if(ca.getMode()==4) {
+		
+		if(ca.getMode()==4) {
 
 			this.PExtremite.setX(m.getX());
 			this.PExtremite.setY(m.getY());
@@ -321,6 +345,7 @@ public class Sourie  implements MouseListener, MouseMotionListener{
 			
 		}
 		
+		
 		if(ca.getMode()==5 && this.mode == 1) {
 			this.PExtremite.setX(m.getX());
 			this.PExtremite.setY(m.getY());
@@ -342,7 +367,14 @@ public class Sourie  implements MouseListener, MouseMotionListener{
 			
 		}
 		
-		
+		if(ca.getMode()==9) {
+			if(this.mode==2) {
+				this.haut=Math.abs(this.POrigin.getY()-m.getY());
+				this.larg=Math.abs(this.POrigin.getX()-m.getX());
+				this.angle=Math.atan2((this.POrigin.getY()-m.getY()), this.POrigin.getX()-m.getX());
+				ca.getPreview().set(0, new Arc(this.POrigin,this.haut,this.larg,this.angle));
+			}
+		}
 		
 		
 		ca.repaint();
