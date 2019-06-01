@@ -1,6 +1,7 @@
 package Interface;
 
 
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -12,6 +13,7 @@ import Objet_base.Rectangle;
 import Objet_base.Objet_Geometrique;
 import P2D.Point2D;
 import Objet_base.Cercle;
+import Objet_base.Ellipse;
 import Objet_base.Quadrangle;
 import Objet_base.Losange;
 import Objet_base.Segment;
@@ -39,7 +41,6 @@ public class listn implements ActionListener {
 		this.ca = c;
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
 		this.ca.getList().reset();
@@ -85,6 +86,9 @@ public class listn implements ActionListener {
 		}
 		if(source==ca.getB_arcdec()) {
 			ca.setMode(9);
+		}
+		if(source==ca.getB_elipse()) {
+			ca.setMode(10);
 		}
 		if(source==ca.getB_save()) {
 
@@ -133,6 +137,9 @@ public class listn implements ActionListener {
 		         if(id==8) {
 		        	 ca.getArr().add(new Cercle(new Point2D(sc.nextInt(),sc.nextInt()),sc.nextInt()));
 		         }
+		         if(id==10) {
+		        	 ca.getArr().add(new Ellipse(new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),sc.nextInt()));
+		         }
 		         if(id==14) {
 		        	 ca.getArr().add(new Point2D(sc.nextInt(),sc.nextInt()));
 		         }
@@ -156,6 +163,10 @@ public class listn implements ActionListener {
 	
 }
 	}
+	
+
+
+
 }
 	
 
