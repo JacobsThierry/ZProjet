@@ -48,6 +48,58 @@ public class Cadre extends JFrame{
 	private JButton b_triangle; //6
 	private JButton b_multiseg; //7
 	private JButton b_cercle; //8
+	public File getFile() {
+		return file;
+	}
+
+
+	public void setFile(File file) {
+		this.file = file;
+	}
+
+
+	public PrintWriter getWriter() {
+		return writer;
+	}
+
+
+	public void setWriter(PrintWriter writer) {
+		this.writer = writer;
+	}
+
+
+	public JPanel getPantree() {
+		return pantree;
+	}
+
+
+	public void setPantree(JPanel pantree) {
+		this.pantree = pantree;
+	}
+
+
+	public JTree getMonArbre1() {
+		return monArbre1;
+	}
+
+
+	public void setMonArbre1(JTree monArbre1) {
+		this.monArbre1 = monArbre1;
+	}
+
+
+	public JScrollPane getScrollp() {
+		return Scrollp;
+	}
+
+
+	public void setScrollp(JScrollPane scrollp) {
+		Scrollp = scrollp;
+	}
+
+
+
+
 	private JButton b_arcdec; //9
 	private JButton b_elipse; //10
 	private JButton b_multicercle; //11
