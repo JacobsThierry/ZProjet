@@ -11,6 +11,7 @@ import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.ScrollPane;
 import java.awt.event.ActionListener;
+import java.awt.geom.Ellipse2D;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
@@ -55,7 +56,8 @@ public class Cadre extends JFrame{
 	private JButton b_poin; //14
 	private JButton b_delet; //15
 	private JButton b_save;//16
-	private JButton b_charge;
+	private JButton b_charge; //17
+	private JButton b_delete; //18
 	
 	private JLabel l1;
 	private JLabel l2;
@@ -74,7 +76,7 @@ public class Cadre extends JFrame{
 	
 	private int index;
 	
-	private int mode; //mode qui permet de changer la forme que l'on place. Le numéro du mode correspond au numéro des boutons au dessus
+	private int mode; //mode qui permet de changer la forme que l'on place. Le numÃ©ro du mode correspond au numÃ©ro des boutons au dessus
 
 	private ArrayList<Objet_Geometrique> arr;
 	
@@ -125,6 +127,7 @@ public Cadre() {
 	this.b_delet = new JButton("Supprimer");
 	b_save=new JButton("Sauvegarder");
 	b_charge = new JButton("Charger");
+	b_delete= new JButton("Supprimer l'élément");
 	
 	b_deplace.addActionListener(lis);
 	panbtn.add(b_deplace);
@@ -161,6 +164,7 @@ public Cadre() {
 	b_charge.addActionListener(lis);
 	panbtn.add(b_charge);
 	panbtn.add(this.b_delet);
+	b_delete.addActionListener(lis);
 	this.b_delet.addActionListener(lis);
 	
 	
@@ -232,7 +236,7 @@ public Cadre() {
 	
 	
 	pantree.add(Scrollp);
-	
+
 	
 	
 	
@@ -245,7 +249,7 @@ public Cadre() {
 	
 
 	
-	this.setSize(800, 600);
+	this.setSize(1000, 800);
 	
 	
 	this.setVisible(true);
@@ -256,6 +260,16 @@ public Cadre() {
 	
 
 	
+}
+
+
+public JButton getB_delete() {
+	return b_delete;
+}
+
+
+public void setB_delete(JButton b_delete) {
+	this.b_delete = b_delete;
 }
 
 
