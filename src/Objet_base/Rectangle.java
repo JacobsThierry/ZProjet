@@ -60,44 +60,76 @@ public class Rectangle extends Triangle{
 	
 	@Override
 	public boolean isIn(Point2D p) {
-		int cmpt=0;
+				int cmpt=0;
 		int x = p.getX();
 		int y = p.getY();
 		boolean woah1 = true;
 		boolean woah2 = true;
 		boolean woah3 = true;
 		boolean woah4 = true;
+		int save=x;
 		for(int i=x;i<1920;i++) {
-			
-			
-			
-			if((Objet_de_base.dist(this.getPOrigine(),p)+Objet_de_base.dist(this.getP1(),p)==Objet_de_base.dist(this.getPOrigine(),this.getP1())) && woah1) {
-				cmpt++;
-				woah1 = (1==2);
-				
-		}
-			if((Objet_de_base.dist(this.getPOrigine(),p)+Objet_de_base.dist(this.getP2(),p)==Objet_de_base.dist(this.getPOrigine(),this.getP2())) && woah2) {
-				cmpt++;
-				woah2 = (1==2);
-				
-		}
-			if((Objet_de_base.dist(this.getP1(),p)+Objet_de_base.dist(this.getP3(),p)==Objet_de_base.dist(this.getP1(),this.getP3())) && woah3) {
-				cmpt++;
-				woah3 = false;
-				
+				if((Objet_de_base.dist(this.getPOrigine(),p)+Objet_de_base.dist(this.getP1(),p)==Objet_de_base.dist(this.getPOrigine(),this.getP1())) && woah1) {
+					cmpt++;
+					woah1 = (1==2);
+					
 			}
-			if((Objet_de_base.dist(this.getP2(),p)+Objet_de_base.dist(this.getP3(),p)==Objet_de_base.dist(this.getP2(),this.getP3())) && woah4) {
-				cmpt++;
-				woah4 = false;
-				
+				if((Objet_de_base.dist(this.getPOrigine(),p)+Objet_de_base.dist(this.getP2(),p)==Objet_de_base.dist(this.getPOrigine(),this.getP2())) && woah2) {
+					cmpt++;
+					woah2 = (1==2);
+					
 			}
-			p.setX(i);
+				if((Objet_de_base.dist(this.getP1(),p)+Objet_de_base.dist(this.getP3(),p)==Objet_de_base.dist(this.getP1(),this.getP3())) && woah3) {
+					cmpt++;
+					woah3 = false;
+					
+				}
+				if((Objet_de_base.dist(this.getP2(),p)+Objet_de_base.dist(this.getP3(),p)==Objet_de_base.dist(this.getP2(),this.getP3())) && woah4) {
+					cmpt++;
+					woah4 = false;
+					
+				}
+
+				p.setX(i);
+					}
+	
+			if(cmpt>=2) {
+				p.setX(save);
+				cmpt=0;
+				 woah1 = true;
+				 woah2 = true;
+				 woah3 = true;
+				 woah4 = true;
+				for( int i=x;i>=0;i--) {
+					
+					if((Objet_de_base.dist(this.getPOrigine(),p)+Objet_de_base.dist(this.getP1(),p)==Objet_de_base.dist(this.getPOrigine(),this.getP1())) && woah1) {
+						cmpt++;
+						woah1 = (1==2);
+						
+				}
+					if((Objet_de_base.dist(this.getPOrigine(),p)+Objet_de_base.dist(this.getP2(),p)==Objet_de_base.dist(this.getPOrigine(),this.getP2())) && woah2) {
+						cmpt++;
+						woah2 = (1==2);
+						
+				}
+					if((Objet_de_base.dist(this.getP1(),p)+Objet_de_base.dist(this.getP3(),p)==Objet_de_base.dist(this.getP1(),this.getP3())) && woah3) {
+						cmpt++;
+						woah3 = false;
+						
+					}
+					if((Objet_de_base.dist(this.getP2(),p)+Objet_de_base.dist(this.getP3(),p)==Objet_de_base.dist(this.getP2(),this.getP3())) && woah4) {
+						cmpt++;
+						woah4 = false;
+						
+					}
+					p.setX(i);
+				}
+				
 			
-		
 
 
-	}
-		return(cmpt==1);
+		}
+			return(cmpt==1);
 		
 	}
 	
