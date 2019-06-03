@@ -14,23 +14,6 @@ public class Rectangle extends Triangle{
 		this.p3 = p3;
 	}
 	
-	public Rectangle(int x, int y, int longeur, int largeur) {
-		super(new Point2D(x,y),new Point2D(x+longeur, y), new Point2D(x, y+largeur));
-		p3 = new Point2D(x+longeur, y+largeur);
-	}
-	
-	public Rectangle(int x, int y, int longeur, int largeur, double angle) {
-		super((new Point2D(x,y ) ), new Point2D(), new Point2D());
-		
-		
-				
-		this.setP1(new Point2D((int)(x + longeur * Math.cos(angle )) , (int) (y + longeur * Math.sin((angle))) ));
-		this.setP2(new Point2D((int)(x - largeur * Math.sin(angle)) , (int) (y + largeur * Math.cos(angle))));
-						p3 = new Point2D((int) (x + (largeur * (-Math.sin(angle)) + (longeur * Math.cos(angle)))),
-								(int) (y + (longeur * (Math.sin((angle))) + (largeur*Math.cos((angle)))) ));
-						
-	}
-	
 	public Rectangle(Segment s1, int longueur, double angle ) {
 		super(s1.getPOrigine(), s1.getP1(), new Point2D());
 		
@@ -38,9 +21,7 @@ public class Rectangle extends Triangle{
 			angle = -angle ;
 			
 		}
-			
-		
-		
+					
 		this.setP2( (new Segment(s1.getPOrigine(), angle + (Math.PI/2), longueur*2).getP1() ) );
 		p3 = ( new Segment(s1.getP1(), angle + (Math.PI/2), longueur*2 ).getP1() );
 		

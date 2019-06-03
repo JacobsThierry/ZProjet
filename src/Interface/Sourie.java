@@ -72,7 +72,7 @@ public class Sourie  implements MouseListener, MouseMotionListener{
 	}
 
 	@Override
-	public void mousePressed(MouseEvent m) {
+	public void mousePressed(MouseEvent m) { // a chaque clic aillant un effet, on incremente this.mode
 		int x = m.getX();
 		int y = m.getY();
 		
@@ -303,7 +303,7 @@ public class Sourie  implements MouseListener, MouseMotionListener{
 				ca.getPreview().set(0, new Segment(this.POrigin, new Point2D(m.getX(), m.getY())));
 			}
 			else if(this.mode == 2 && ca.getMode() == 2) {
-				int dist = new Triangle(this.POrigin, this.P1, new Point2D(m.getX(), m.getY())).getHauteur();
+				int dist = new Triangle(this.POrigin, this.P1, new Point2D(m.getX(), m.getY())).getHauteur(); //les distances et hauteur sont en valeur absolue. On cherche donc a savoir de quel côté on doit dessiné le rectangle. On crée donc 2 rectangle allant dans les 2 senses, et on garde celui dont le centre du côté est le plus proche de la sourie.
 				Rectangle rect = new Rectangle(new Segment(this.POrigin, this.P1) , dist, ((new Segment(this.POrigin, this.P1).getAngle())));
 				Rectangle rect2 = new Rectangle(new Segment(this.POrigin, this.P1) , -dist, ((new Segment(this.POrigin, this.P1).getAngle())));
 				

@@ -15,7 +15,7 @@ public class Triangle extends Segment{
 		this.p2 = p2;
 	}
 	
-	public Triangle(int x, int y, int hauteur) { //TODO faire en sorte de faire de meilleur triangles
+	public Triangle(int x, int y, int hauteur) {
 		super(new Point2D(x,y), new Point2D(0,0));
 		this.setP1(new Point2D(x-hauteur,y));
 		p2 = new Point2D(x-hauteur,y+hauteur);
@@ -116,7 +116,7 @@ public class Triangle extends Segment{
 		
 	}
 	
-	public int getHauteur() {
+	public int getHauteur() { // h² = c² - ((a² - b² + c²)/2a)² avec a = distance PO P2, b = distance P2 P3, c = distance PO P3 et h = la hauteur
 		return (int) Math.sqrt(
 				(Objet_de_base.dist(this.getPOrigine(), this.getP2()))*(Objet_de_base.dist(this.getPOrigine(), this.getP2())) 
 				- (

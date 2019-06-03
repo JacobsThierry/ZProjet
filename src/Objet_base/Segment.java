@@ -17,7 +17,7 @@ public class Segment extends Objet_de_base{
 		this.p1 = p1;
 	}
 
-	public Segment(Point2D pOrigine, double angle, int longueur) {
+	public Segment(Point2D pOrigine, double angle, int longueur) { //crée un segment d'angle angle et de centre POrigine
 		super(new Point2D());
 		if(angle < Math.PI) {
 		this.setPOrigine(new Point2D( (int) (pOrigine.getX() - Math.cos(angle)* longueur/2), (int) (pOrigine.getY() + Math.sin(angle) * longueur/2 )));
