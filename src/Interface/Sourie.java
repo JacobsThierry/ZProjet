@@ -94,7 +94,7 @@ public class Sourie  implements MouseListener, MouseMotionListener{
 			
 			}
 			}
-			if(ca.getMode() == 5 || ca.getMode() == 8) { //on pose des points a la main si c'est un triangle ou un quadrilatère
+			if(ca.getMode() == 5 || ca.getMode() == 8) { //on pose des points a la main si c'est un triangle ou un quadrilatÃ¨re
 				if(this.mode == 0) {
 					this.POrigin = new Point2D(m.getX(), m.getY());
 					this.PExtremite = new Point2D(m.getX(), m.getY());
@@ -202,7 +202,7 @@ public class Sourie  implements MouseListener, MouseMotionListener{
 						}
 						
 					}
-				if(ca.getMode() == 1 || ca.getMode() == 6) { // si on fais un quadrilatère ou un triangle, on affiche un segment quand on a 2 points, un triangle quand on en a 3
+				if(ca.getMode() == 1 || ca.getMode() == 6) { // si on fais un quadrilatÃ¨re ou un triangle, on affiche un segment quand on a 2 points, un triangle quand on en a 3
 					if(this.mode == 0) {
 						this.POrigin = new Point2D(m.getX(), m.getY());
 						this.mode = 1;
@@ -303,7 +303,7 @@ public class Sourie  implements MouseListener, MouseMotionListener{
 				ca.getPreview().set(0, new Segment(this.POrigin, new Point2D(m.getX(), m.getY())));
 			}
 			else if(this.mode == 2 && ca.getMode() == 2) {
-				int dist = new Triangle(this.POrigin, this.P1, new Point2D(m.getX(), m.getY())).getHauteur(); //les distances et hauteur sont en valeur absolue. On cherche donc a savoir de quel c�t� on doit dessin� le rectangle. On cr�e donc 2 rectangle allant dans les 2 senses, et on garde celui dont le centre du c�t� est le plus proche de la sourie.
+				int dist = new Triangle(this.POrigin, this.P1, new Point2D(m.getX(), m.getY())).getHauteur(); //les distances et hauteur sont en valeur absolue. On cherche donc a savoir de quel côté on doit dessiné le rectangle. On crée donc 2 rectangle allant dans les 2 senses, et on garde celui dont le centre du côté est le plus proche de la sourie.
 				Rectangle rect = new Rectangle(new Segment(this.POrigin, this.P1) , dist, ((new Segment(this.POrigin, this.P1).getAngle())));
 				Rectangle rect2 = new Rectangle(new Segment(this.POrigin, this.P1) , -dist, ((new Segment(this.POrigin, this.P1).getAngle())));
 				
@@ -402,12 +402,12 @@ public class Sourie  implements MouseListener, MouseMotionListener{
 			
 		}
 		
-		if(ca.getMode()==9) {
-			if(this.mode==2) {
+	if(ca.getMode()==9) {
+			if(this.mode==1) {
 				this.haut=Math.abs(this.POrigin.getY()-m.getY());
-				this.larg=Math.abs(this.POrigin.getX()-m.getX());
+				this.larg=Math.abs(180);
 				this.angle=Math.atan2((this.POrigin.getY()-m.getY()), this.POrigin.getX()-m.getX());
-				//ca.getPreview().set(0, new Arc(this.POrigin,this.haut,this.larg,this.angle));
+				ca.getPreview().set(0, new Arc(this.POrigin,this.haut,this.larg,this.angle));
 			}
 		}
 		
