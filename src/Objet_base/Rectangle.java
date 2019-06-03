@@ -20,13 +20,14 @@ public class Rectangle extends Triangle{
 	}
 	
 	public Rectangle(int x, int y, int longeur, int largeur, double angle) {
-		super((new Point2D(x,y ) ),
-						new Point2D((int)(x + longeur * Math.cos(Math.toRadians(angle) )) , (int) (y + longeur * Math.sin(Math.toRadians(angle))) 
-								),
-						new Point2D((int)(x - largeur * Math.sin(Math.toRadians(angle))) , (int) (y + largeur * Math.cos(Math.toRadians(angle))))
-						);
-						p3 = new Point2D((int) (x + (largeur * (-Math.sin(Math.toRadians(angle))) + (longeur * Math.cos(Math.toRadians(angle))))),
-								(int) (y + (longeur * (Math.sin(Math.toRadians(angle))) + (largeur*Math.cos(Math.toRadians(angle)))) ));
+		super((new Point2D(x,y ) ), new Point2D(), new Point2D());
+		
+		
+				
+		this.setP1(new Point2D((int)(x + longeur * Math.cos(angle )) , (int) (y + longeur * Math.sin((angle))) ));
+		this.setP2(new Point2D((int)(x - largeur * Math.sin(angle)) , (int) (y + largeur * Math.cos(angle))));
+						p3 = new Point2D((int) (x + (largeur * (-Math.sin(angle)) + (longeur * Math.cos(angle)))),
+								(int) (y + (longeur * (Math.sin((angle))) + (largeur*Math.cos((angle)))) ));
 						
 	}
 
