@@ -36,7 +36,7 @@ public class Rectangle extends Triangle{
 		
 		if(s1.getPOrigine().getY() < s1.getP1().getY() ) {
 			angle = -angle ;
-			System.out.println("x");
+			
 		}
 			
 		

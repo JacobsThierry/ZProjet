@@ -5,6 +5,7 @@ import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
 import Objet_base.Cercle;
+import Objet_base.Ellipse;
 import Objet_base.Losange;
 import Objet_base.Objet_Geometrique;
 import Objet_base.Objet_de_base;
@@ -34,6 +35,7 @@ public class Sourie  implements MouseListener, MouseMotionListener{
 		super();
 		this.ca = ca;
 		arrabouger = new ArrayList<Objet_Geometrique>();
+		this.mode = 0;
 		reset();
 		
 	}
@@ -109,7 +111,7 @@ public class Sourie  implements MouseListener, MouseMotionListener{
 
 			}
 			
-			if(ca.getMode()==2) {
+			if(ca.getMode()==2 || ca.getMode() == 10) {
 				if(this.mode == 0) {
 					this.POrigin = new Point2D(m.getX(), m.getY());
 					this.mode++;
@@ -296,12 +298,14 @@ public class Sourie  implements MouseListener, MouseMotionListener{
 				}
 			}
 			
-		if(ca.getMode()==2) {
+		if(ca.getMode()==2 || ca.getMode() == 10) {
 			if(this.mode == 1) {
 				ca.getPreview().set(0, new Segment(this.POrigin, new Point2D(m.getX(), m.getY())));
 			}
-			else if(this.mode == 2) {
+			else if(this.mode == 2 && ca.getMode() == 2) {
 				ca.getPreview().set(0, new Rectangle(new Segment(this.POrigin, this.P1) , (new Triangle(this.POrigin, this.P1, new Point2D(m.getX(), m.getY())) ).getHauteur(), ((new Segment(this.POrigin, this.P1).getAngle())) ));
+			}else if(this.mode == 2 && ca.getMode() == 10) {
+				ca.getPreview().set(0, new Ellipse(new Segment(this.POrigin, this.P1) , (new Triangle(this.POrigin, this.P1, new Point2D(m.getX(), m.getY())) ).getHauteur(), ((new Segment(this.POrigin, this.P1).getAngle())) ));
 			}
 			
 			

@@ -1,7 +1,7 @@
 package Objet_base;
 
 
-import java.awt.Color;
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
@@ -14,7 +14,7 @@ import P2D.Vecteur2D;
 
 public class Ellipse extends Rectangle {
 	private Point2D P4;
-	private int angle;
+	private double angle;
 
 	
 	public Ellipse(Point2D pOrigine, Point2D p1, Point2D p2, Point2D p3, Point2D p4,int angle) {
@@ -23,7 +23,7 @@ public class Ellipse extends Rectangle {
 		this.angle=angle;
 	}
 
-	public Ellipse(Segment s, int longeur,int angle) {
+	public Ellipse(Segment s, int longeur, double angle) {
 		super(s.getMilieux(), s.getPOrigine(), new Segment( s.getMilieux(), s.getAngle() + (Math.PI/2), longeur ).getPOrigine(), s.getP1());
 		Segment s2 = new Segment( s.getMilieux(), (s.getAngle() + (Math.PI/2)), longeur );
 		this.setP4( s2.getP1());
@@ -37,7 +37,7 @@ public class Ellipse extends Rectangle {
 @Override
 public void afficher(Graphics g) {
 	AffineTransform old = ((Graphics2D) g).getTransform();
-	 ((Graphics2D) g).rotate(Math.toRadians(this.angle),this.getPOrigine().getX()+Math.abs(Objet_de_base.dist(this.getP2(),this.getP4()))/2,this.getPOrigine().getY()+Objet_de_base.dist(this.getPOrigine(), this.getP3())/2);
+	 ((Graphics2D) g).rotate(this.angle,this.getPOrigine().getX()+Math.abs(Objet_de_base.dist(this.getP2(),this.getP4()))/2,this.getPOrigine().getY()+Objet_de_base.dist(this.getPOrigine(), this.getP3())/2);
 	g.drawOval(this.getP1().getX(),this.getP1().getY(),Math.abs(Objet_de_base.dist(this.getP2(),this.getP4())),Objet_de_base.dist(this.getPOrigine(), this.getP3()));
 	((Graphics2D) g).setTransform(old);
 	
@@ -79,8 +79,16 @@ public boolean isIn(Point2D p) {
 
 @Override
 public DefaultMutableTreeNode getNode() {
-	// TODO Auto-generated method stub
-	return null;
+	DefaultMutableTreeNode node = new DefaultMutableTreeNode("Ellipse");
+	node.add(this.getPOrigine().getNode("Po"));
+	node.add(this.getP1().getNode("P1"));
+	node.add(this.getP2().getNode("P2"));
+	node.add(this.getP3().getNode("P3"));
+	node.add(this.getP4().getNode("P3"));
+	DefaultMutableTreeNode n =   (new DefaultMutableTreeNode ("Angle"));
+	n.add((new DefaultMutableTreeNode(this.angle)));
+	node.add(n);
+	return node;
 }
 
 public String toString() {
