@@ -303,7 +303,18 @@ public class Sourie  implements MouseListener, MouseMotionListener{
 				ca.getPreview().set(0, new Segment(this.POrigin, new Point2D(m.getX(), m.getY())));
 			}
 			else if(this.mode == 2 && ca.getMode() == 2) {
-				ca.getPreview().set(0, new Rectangle(new Segment(this.POrigin, this.P1) , (new Triangle(this.POrigin, this.P1, new Point2D(m.getX(), m.getY())) ).getHauteur(), ((new Segment(this.POrigin, this.P1).getAngle())) ));
+				int dist = new Triangle(this.POrigin, this.P1, new Point2D(m.getX(), m.getY())).getHauteur();
+				Rectangle rect = new Rectangle(new Segment(this.POrigin, this.P1) , dist, ((new Segment(this.POrigin, this.P1).getAngle())));
+				Rectangle rect2 = new Rectangle(new Segment(this.POrigin, this.P1) , -dist, ((new Segment(this.POrigin, this.P1).getAngle())));
+				
+				if(Objet_de_base.dist((new Segment(rect.getP3() , rect.getP2()).getMilieux()), (new Point2D(m.getX(), m.getY()))) >
+				Objet_de_base.dist((new Segment(rect2.getP3() , rect2.getP2()).getMilieux() ), new Point2D(m.getX(), m.getY()))) {
+					ca.getPreview().set(0,rect2);
+				}else {
+					ca.getPreview().set(0, rect);
+				}
+								
+				
 			}else if(this.mode == 2 && ca.getMode() == 10) {
 				ca.getPreview().set(0, new Ellipse(new Segment(this.POrigin, this.P1) , (new Triangle(this.POrigin, this.P1, new Point2D(m.getX(), m.getY())) ).getHauteur(), ((new Segment(this.POrigin, this.P1).getAngle())) ));
 			}
