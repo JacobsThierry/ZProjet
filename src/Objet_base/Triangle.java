@@ -114,6 +114,20 @@ public class Triangle extends Segment{
 		node.add(this.getP2().getNode("P2"));
 		return node;
 		
-	}		
+	}
+	
+	public int getHauteur() {
+		return (int) Math.sqrt(
+				(Objet_de_base.dist(this.getPOrigine(), this.getP2()))*(Objet_de_base.dist(this.getPOrigine(), this.getP2())) 
+				- (
+						(Objet_de_base.dist(this.getPOrigine(), this.getP1())*(Objet_de_base.dist(this.getPOrigine(), this.getP1())) - Objet_de_base.dist(this.getP1(), this.getP2())*Objet_de_base.dist(this.getP1(), this.getP2()) + Objet_de_base.dist(this.getPOrigine(), this.getP2())*Objet_de_base.dist(this.getPOrigine(), this.getP2()))
+						/ (2 * Objet_de_base.dist(this.getPOrigine(), this.getP1()))
+						) * (
+								(Objet_de_base.dist(this.getPOrigine(), this.getP1())*(Objet_de_base.dist(this.getPOrigine(), this.getP1())) - Objet_de_base.dist(this.getP1(), this.getP2())*Objet_de_base.dist(this.getP1(), this.getP2()) + Objet_de_base.dist(this.getPOrigine(), this.getP2())*Objet_de_base.dist(this.getPOrigine(), this.getP2()))
+								/ (2 * Objet_de_base.dist(this.getPOrigine(), this.getP1()))
+								)
+				
+				);
+	}
 	
 }

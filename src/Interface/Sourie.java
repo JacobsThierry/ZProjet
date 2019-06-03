@@ -300,7 +300,7 @@ public class Sourie  implements MouseListener, MouseMotionListener{
 				ca.getPreview().set(0, new Segment(this.POrigin, new Point2D(m.getX(), m.getY())));
 			}
 			else if(this.mode == 2) {
-				ca.getPreview().set(0, new Rectangle(this.POrigin.getX(), this.POrigin.getY(), Objet_de_base.dist(this.P1, this.POrigin), Objet_de_base.dist(this.POrigin, new Point2D(m.getX(), m.getY())), -Math.toDegrees((new Segment(this.POrigin, this.P1).getAngle())) ));
+				ca.getPreview().set(0, new Rectangle(this.POrigin.getX(), this.POrigin.getY(), Objet_de_base.dist(this.P1, this.POrigin), (new Triangle(this.POrigin, this.P1, new Point2D(m.getX(), m.getY())) ).getHauteur(), Math.toDegrees((new Segment(this.POrigin, this.P1).getAngle())) ));
 			}
 			
 			
