@@ -131,8 +131,24 @@ public class listn implements ActionListener {
 	                printWriter.close();
 	            }
 	        }
-			
+		
+		
 		}
+		if(source==ca.getB_delete()) {
+			DefaultTreeModel model=(DefaultTreeModel) ca.getMonArbre1().getModel();
+			TreePath[] paths= ca.getMonArbre1().getSelectionPaths();
+		      if (paths != null) {
+                  for (TreePath path : paths) {
+                      DefaultMutableTreeNode node = (DefaultMutableTreeNode) path.getLastPathComponent();
+                      DefaultMutableTreeNode node1 = (DefaultMutableTreeNode) ca.getMonArbre1().getModel().getRoot();
+                      if(node.getParent()==node.getRoot()) {
+                    	  int id = ca.getMonArbre1().getModel().getIndexOfChild(node1, node);
+                    		ca.getArr().remove(id);
+                    		model.removeNodeFromParent(node);
+                
+                      ca.repaint();
+                  }
+              }
 		if(source==ca.getB_charge()) {
 			 try
 		        {
