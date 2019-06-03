@@ -236,7 +236,8 @@ public Cadre() {
 	
 	
 	pantree.add(Scrollp);
-
+	pantree.add(b_delete);
+	
 	
 	
 	
