@@ -46,7 +46,6 @@ public class Sourie  implements MouseListener, MouseMotionListener{
 		this.mode = 0;
 		this.P1 = new Point2D();
 		this.P2 = new Point2D();
-		
 		arrabouger.clear();
 		ca.cleanPreview();
 	}

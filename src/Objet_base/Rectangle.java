@@ -35,7 +35,7 @@ public class Rectangle extends Triangle{
 		super(s1.getPOrigine(), s1.getP1(), new Point2D());
 		
 		if(s1.getPOrigine().getY() < s1.getP1().getY() ) {
-			angle = -angle ; //TODO fixe le rectangle quand l'angle est supérieur a pi. Le prob, c'est que l'angle est toujours entre 0 et pi
+			angle = -angle ;
 			System.out.println("x");
 		}
 			
