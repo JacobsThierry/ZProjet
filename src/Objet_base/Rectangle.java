@@ -30,6 +30,22 @@ public class Rectangle extends Triangle{
 								(int) (y + (longeur * (Math.sin((angle))) + (largeur*Math.cos((angle)))) ));
 						
 	}
+	
+	public Rectangle(Segment s1, int longueur, double angle ) {
+		super(s1.getPOrigine(), s1.getP1(), new Point2D());
+		
+		if(s1.getPOrigine().getY() < s1.getP1().getY() ) {
+			angle = -angle ; //TODO fixe le rectangle quand l'angle est supérieur a pi. Le prob, c'est que l'angle est toujours entre 0 et pi
+			System.out.println("x");
+		}
+			
+		
+		
+		this.setP2( (new Segment(s1.getPOrigine(), angle + (Math.PI/2), longueur*2).getP1() ) );
+		p3 = ( new Segment(s1.getP1(), angle + (Math.PI/2), longueur*2 ).getP1() );
+		
+		
+	}
 
 	public Point2D getP3() {
 		return p3;
