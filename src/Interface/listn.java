@@ -111,7 +111,7 @@ public class listn implements ActionListener {
           }
 		}
 		if(source==ca.getB_save()) {
-
+		
 
 	        try
 	        {
@@ -149,7 +149,10 @@ public class listn implements ActionListener {
                       ca.repaint();
                   }
               }
+		      }
+		}
 		if(source==ca.getB_charge()) {
+			System.out.println("defef");
 			 try
 		        {
 				 Scanner sc=new Scanner(file);
@@ -204,6 +207,6 @@ public class listn implements ActionListener {
 
 
 
-}
+		}
 	
 

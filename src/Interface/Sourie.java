@@ -4,6 +4,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
+import Objet_base.Arc;
 import Objet_base.Cercle;
 import Objet_base.Ellipse;
 import Objet_base.Losange;

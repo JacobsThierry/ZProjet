@@ -7,7 +7,7 @@ public class test {
 		
 		Cadre c1 = new Cadre();  
 
-	}
+	} 
 
 }
   
