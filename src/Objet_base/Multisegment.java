@@ -25,7 +25,7 @@ public class Multisegment extends Objet_de_base{
 	}
 
 	public Multisegment(Segment s) {
-		super(s.getPOrigine());
+		super(s.getPOrigine().dupliquer());
 		this.arr = new ArrayList<Segment>();
 		this.arr.add(s);
 	}

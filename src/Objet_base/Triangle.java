@@ -117,15 +117,29 @@ public class Triangle extends Segment{
 	}
 	
 	public int getHauteur() { // h² = c² - ((a² - b² + c²)/2a)² avec a = distance PO P2, b = distance P2 P3, c = distance PO P3 et h = la hauteur
-		return (int) Math.sqrt(
-				(Objet_de_base.dist(this.getPOrigine(), this.getP2()))*(Objet_de_base.dist(this.getPOrigine(), this.getP2())) 
-				- ((Objet_de_base.dist(this.getPOrigine(), this.getP1())*(Objet_de_base.dist(this.getPOrigine(), this.getP1())) - Objet_de_base.dist(this.getP1(), this.getP2())*Objet_de_base.dist(this.getP1(), this.getP2()) + Objet_de_base.dist(this.getPOrigine(), this.getP2())*Objet_de_base.dist(this.getPOrigine(), this.getP2()))
-						/ (2 * Objet_de_base.dist(this.getPOrigine(), this.getP1()))
-						) * ((Objet_de_base.dist(this.getPOrigine(), this.getP1())*(Objet_de_base.dist(this.getPOrigine(), this.getP1())) - Objet_de_base.dist(this.getP1(), this.getP2())*Objet_de_base.dist(this.getP1(), this.getP2()) + Objet_de_base.dist(this.getPOrigine(), this.getP2())*Objet_de_base.dist(this.getPOrigine(), this.getP2()))
-								/ (2 * Objet_de_base.dist(this.getPOrigine(), this.getP1()))
-								)
-				
-				);
+		
+		try {
+			return (int) Math.sqrt((Objet_de_base.dist(this.getPOrigine(), this.getP2()))
+					* (Objet_de_base.dist(this.getPOrigine(), this.getP2()))
+					- ((Objet_de_base.dist(this.getPOrigine(), this.getP1())
+							* (Objet_de_base.dist(this.getPOrigine(), this.getP1()))
+							- Objet_de_base.dist(this.getP1(), this.getP2())
+									* Objet_de_base.dist(this.getP1(), this.getP2())
+							+ Objet_de_base.dist(this.getPOrigine(), this.getP2())
+									* Objet_de_base.dist(this.getPOrigine(), this.getP2()))
+							/ (2 * Objet_de_base.dist(this.getPOrigine(), this.getP1())))
+							* ((Objet_de_base.dist(this.getPOrigine(), this.getP1())
+									* (Objet_de_base.dist(this.getPOrigine(), this.getP1()))
+									- Objet_de_base.dist(this.getP1(), this.getP2())
+											* Objet_de_base.dist(this.getP1(), this.getP2())
+									+ Objet_de_base.dist(this.getPOrigine(), this.getP2())
+											* Objet_de_base.dist(this.getPOrigine(), this.getP2()))
+									/ (2 * Objet_de_base.dist(this.getPOrigine(), this.getP1())))
+
+			);
+		} catch (Exception e) {
+			return 0;
+		}
 	}
 	
 }
