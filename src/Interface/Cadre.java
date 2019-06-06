@@ -243,10 +243,11 @@ public Cadre() {
 	
 	this.addMouseListener(list);
 	this.addMouseMotionListener(list);
+	this.setFocusable(true);
+	this.addKeyListener(list);
 	
 	
 	
-
 	
 
 	

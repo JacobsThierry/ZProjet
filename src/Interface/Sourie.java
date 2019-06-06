@@ -1,4 +1,6 @@
 package Interface;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -16,7 +18,7 @@ import Objet_base.Triangle;
 import P2D.Point2D;
 import P2D.Vecteur2D;
 
-public class Sourie  implements MouseListener, MouseMotionListener{
+public class Sourie  implements MouseListener, MouseMotionListener, KeyListener{
 
 	private Cadre ca;
 	private Point2D POrigin;
@@ -51,6 +53,7 @@ public class Sourie  implements MouseListener, MouseMotionListener{
 		this.P2 = new Point2D();
 		arrabouger.clear();
 		ca.cleanPreview();
+		
 	}
 
 	@Override
@@ -279,8 +282,6 @@ public class Sourie  implements MouseListener, MouseMotionListener{
 	public void mouseMoved(MouseEvent m) {
 		
 		
-		
-		
 		if((m.getY() >= ca.getPanbtn().getHeight() * 1.3) && ca.getMode() != 0 ) {
 			
 			
@@ -415,7 +416,32 @@ public class Sourie  implements MouseListener, MouseMotionListener{
 		
 		ca.repaint();
 		
+		
 	}
+		ca.requestFocusInWindow();
+	}
+
+	@Override
+	public void keyPressed(KeyEvent arg0) {
+		int source = arg0.getKeyCode();
+		if(source == KeyEvent.VK_ESCAPE) {
+			this.reset();
+			ca.repaint();
+		}
+		
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		
+		
 	}
 	
 	
