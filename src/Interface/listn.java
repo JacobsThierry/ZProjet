@@ -95,6 +95,11 @@ public class listn implements ActionListener {
 			ca.setMode(10);
 		}
 		
+		if(source == ca.getB_multirectangle()) {
+			ca.setMode(13);
+			
+		}
+		
 		if(source==ca.getB_poin() ) {
 			ca.setMode(14);
 		}
