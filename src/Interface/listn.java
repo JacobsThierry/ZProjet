@@ -187,6 +187,15 @@ public class listn implements ActionListener {
 		         if(id==6) {
 		        	 ca.getArr().add(new Triangle(new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt())) );
 		         }
+			if(id==7){	       
+		        	
+		        	POrigin=new Point2D(sc.nextInt(),sc.nextInt());
+		        	int v=sc.nextInt();
+		        	for(int i=0;i<v;i++){
+		        			arr.add(new Segment(new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt())));}
+		        	 ca.getArr().add(new Multisegment(POrigin,arr));
+				 }
+		        
 		         
 		         if(id==8) {
 		        	 ca.getArr().add(new Cercle(new Point2D(sc.nextInt(),sc.nextInt()),sc.nextInt()));
