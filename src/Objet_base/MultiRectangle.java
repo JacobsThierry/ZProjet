@@ -25,40 +25,66 @@ public class MultiRectangle extends Objet_de_base{
 		super(pOrigine);
 		this.arr = new ArrayList<Rectangle>();
 	}
+	
+	public MultiRectangle(Rectangle rect) {
+		super(rect.getPOrigine().dupliquer());
+		this.arr = new ArrayList<Rectangle>();
+		arr.add(rect);
+	}
 
 	@Override
 	public void deplacer(Vecteur2D v) {
-		
+		this.getPOrigine().deplacer(v);
+		for(int i = 0; i < this.arr.size();i++) {
+			arr.get(i).deplacer(v);
+		}
 		
 	}
 
 	@Override
 	public boolean isIn(Point2D p) {
-		// TODO Auto-generated method stub
+		for(int i = 0; i < this.arr.size();i++) {
+			if(this.arr.get(i).isIn(p)) {
+				return true;
+			}
+		}
 		return false;
 	}
 
 	@Override
-	public Objet_Geometrique dupliquer() {
-		// TODO Auto-generated method stub
-		return null;
+	public MultiRectangle dupliquer() {
+		ArrayList<Rectangle> arr = new ArrayList<Rectangle>();  
+		for(int i = 0 ; i < this.arr.size(); i++) {
+			arr.add(this.arr.get(i).dupliquer());
+		}
+		return new MultiRectangle(this.getPOrigine().dupliquer(), arr);
 	}
 
 	@Override
 	public Objet_Geometrique appliquerVecteur(Vecteur2D v) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		MultiRectangle arra = this.dupliquer();
+		arra.deplacer(v);
+		return arra;
 	}
 
 	@Override
 	public DefaultMutableTreeNode getNode() {
-		// TODO Auto-generated method stub
-		return null;
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode("Multi-Rectangle");
+		node.add(this.getPOrigine().getNode("Po"));
+		
+		for(int i=0; i< this.arr.size(); i++) {
+			node.add(arr.get(i).getNode("Rectangle " + (i+1)));
+		}
+		return node;
+		
 	}
 
 	@Override
 	public void afficher(Graphics g) {
-		// TODO Auto-generated method stub
+		for(int i = 0; i < this.arr.size(); i++) {
+			this.arr.get(i).afficher(g);
+		}
 		
 	}
 	

@@ -113,7 +113,7 @@ public Point2D getExtremite(Point2D p) {
 		node.add(this.getPOrigine().getNode("Po"));
 		
 		for(int i=0; i< this.arr.size(); i++) {
-			node.add(arr.get(i).getNode("Segment " + i));
+			node.add(arr.get(i).getNode("Segment " + (i+1) ));
 		}
 		return node;		
 	}
