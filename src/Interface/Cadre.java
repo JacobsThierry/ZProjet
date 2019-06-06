@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.ScrollPane;
 import java.awt.event.ActionListener;
@@ -15,13 +16,16 @@ import java.awt.geom.Ellipse2D;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
+import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 import javax.swing.JTree;
+import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
 import javax.swing.tree.DefaultMutableTreeNode;
 
@@ -29,6 +33,11 @@ import Objet_base.Cercle;
 import Objet_base.Objet_Geometrique;
 import P2D.Point2D;
 import P2D.Vecteur2D;
+import java.awt.Font;
+import java.awt.Graphics;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class Cadre extends JFrame{
 	/**
@@ -73,10 +82,14 @@ public class Cadre extends JFrame{
 	private JPanel panbtn;
 	private JPanel panslider;
 	private JPanel pantree;
+	private JPanel panbtn2;
+	private JPanel label1;
+	
+	private JLabel label;
 	
 	private int index;
 	
-	private int mode; //mode qui permet de changer la forme que l'on place. Le numÃ©ro du mode correspond au numÃ©ro des boutons au dessus
+	private int mode; //mode qui permet de changer la forme que l'on place. Le numÃƒÂ©ro du mode correspond au numÃƒÂ©ro des boutons au dessus
 
 	private ArrayList<Objet_Geometrique> arr;
 	
@@ -96,21 +109,32 @@ public Cadre() {
 	lis = new listn(this);	
 	list = new Sourie(this);
 	mode=0;
+
+    Font myFont = new Font("Gobold",Font.BOLD, 30);
 	
 	arr = new ArrayList<Objet_Geometrique>();
 	
+	label = new JLabel("Mode: ");
+	label.setForeground(Color.LIGHT_GRAY);
+	label.setFont(myFont);
 	
-	
+	label1=new JPanel();
+	label1.setLayout(new BorderLayout());
+	label1.setBackground(Color.GRAY);
+	label1.add(label);
 	
 	panbtn = new JPanel();
-	panbtn.setPreferredSize(new Dimension(200,170));
-	panbtn.setBackground(Color.MAGENTA);
-	panbtn.setLayout(new FlowLayout());
+	panbtn.setPreferredSize(new Dimension(200,150));
+	panbtn.setLayout(new BorderLayout());
+	panbtn.setBackground(Color.GRAY);
 	
+	panbtn2=new JPanel();
+	panbtn2.setBackground(Color.GRAY);
+	panbtn2.setLayout(new GridLayout(2,3,10,10));
+		
 	
-	
-	b_deplace =  new JButton("Deplacer une forme");
-	b_quadri = new JButton("Quadrilatère");
+	b_deplace =  new JButton("Deplacer");
+	b_quadri = new JButton("Quadrilatere");
 	b_rect = new JButton("Rectangle");
 	b_losange = new JButton("Losange");
 	b_quadrangle = new JButton("Quadrangle");
@@ -124,50 +148,68 @@ public Cadre() {
 	b_multielipse= new JButton("Multielipse");
 	b_multirectangle= new JButton("Multirectangle");
 	b_poin = new JButton("Point");
-	this.b_delet = new JButton("Supprimer");
+	this.b_delet = new JButton("Vider la zone");
 	b_save=new JButton("Sauvegarder");
 	b_charge = new JButton("Charger");
-	b_delete= new JButton("Supprimer l'élément");
+	b_delete= new JButton("Supprimer l'element");
 	
 	b_deplace.addActionListener(lis);
-	panbtn.add(b_deplace);
+    b_deplace.setPreferredSize(new Dimension(120, 40));
+	panbtn2.add(b_deplace);
 	b_quadri.addActionListener(lis);
-	panbtn.add(b_quadri);
+    b_quadri.setPreferredSize(new Dimension(120, 40));
+	panbtn2.add(b_quadri);
 	b_rect.addActionListener(lis);
-	panbtn.add(b_rect);
+    b_rect.setPreferredSize(new Dimension(120, 40));
+    panbtn2.add(b_rect);
 	b_losange.addActionListener(lis);
-	panbtn.add(b_losange);
+	b_losange.setPreferredSize(new Dimension(120, 40));
+	panbtn2.add(b_losange);
 	b_quadrangle.addActionListener(lis);
-	panbtn.add(b_quadrangle);
+	b_quadrangle.setPreferredSize(new Dimension(120, 40));
+	panbtn2.add(b_quadrangle);
 	b_segm.addActionListener(lis);
-	panbtn.add(b_segm);
+	b_segm.setPreferredSize(new Dimension(120, 40));
+	panbtn2.add(b_segm);
 	b_triangle.addActionListener(lis);
-	panbtn.add(b_triangle);
+	b_triangle.setPreferredSize(new Dimension(120, 40));
+	panbtn2.add(b_triangle);
 	b_multiseg.addActionListener(lis);
-	panbtn.add(b_multiseg);
+	b_multiseg.setPreferredSize(new Dimension(120, 40));
+	panbtn2.add(b_multiseg);
 	b_cercle.addActionListener(lis);
-	panbtn.add(b_cercle);
+	b_cercle.setPreferredSize(new Dimension(120, 40));
+	panbtn2.add(b_cercle);
 	b_arcdec.addActionListener(lis);
-	panbtn.add(b_arcdec);
+	b_arcdec.setPreferredSize(new Dimension(120, 40));
+	panbtn2.add(b_arcdec);
 	b_elipse.addActionListener(lis);
-	panbtn.add(b_elipse);
+	b_elipse.setPreferredSize(new Dimension(120, 40));
+	panbtn2.add(b_elipse);
 	b_multicercle.addActionListener(lis);
-	panbtn.add(b_multicercle);
+	b_multicercle.setPreferredSize(new Dimension(120, 40));
+	panbtn2.add(b_multicercle);
 	b_multielipse.addActionListener(lis);
-	panbtn.add(b_multielipse);
+	b_multielipse.setPreferredSize(new Dimension(120, 40));
+	panbtn2.add(b_multielipse);
 	b_multirectangle.addActionListener(lis);
-	panbtn.add(b_multirectangle);
+	b_multirectangle.setPreferredSize(new Dimension(120, 40));
+	panbtn2.add(b_multirectangle);
 	b_poin.addActionListener(lis);
-	panbtn.add(b_poin);
+	b_poin.setPreferredSize(new Dimension(120, 40));
+	panbtn2.add(b_poin);
 	b_save.addActionListener(lis);
-	panbtn.add(b_save);
+	b_save.setBackground(Color.CYAN);
 	b_charge.addActionListener(lis);
-	panbtn.add(b_charge);
-	panbtn.add(this.b_delet);
+	b_charge.setBackground(Color.ORANGE);
+	b_delet.setPreferredSize(new Dimension(120, 40));
+	panbtn2.add(this.b_delet);
 	b_delete.addActionListener(lis);
+
 	this.b_delet.addActionListener(lis);
 	
-	
+	panbtn.add(panbtn2,BorderLayout.WEST);
+	panbtn.add(label1,BorderLayout.EAST);
 	
 	Hashtable<Integer, JLabel> tablelabel = new Hashtable<Integer, JLabel>();
 	tablelabel.put(new Integer(1), new JLabel("1"));
@@ -200,22 +242,13 @@ public Cadre() {
 	js3.setLabelTable(tablelabel2);
 	js3.setMajorTickSpacing(15);
 	js3.setPaintLabels(true);
-	
-	panslider = new JPanel();
-	panslider.setLayout(new GridLayout(0,3));
+
 	
 	l1 = new JLabel("Longueur", SwingConstants.CENTER);
 	l2 = new JLabel("Largeur", SwingConstants.CENTER);
 	l3 = new JLabel("Angle", SwingConstants.CENTER); //TODO : gerer les angles
 	
-	panslider.add(l1);
-	panslider.add(l2);
-	panslider.add(l3);
-	panslider.add(js1);
-	panslider.add(js2);
-	panslider.add(js3);
-	
-	panbtn.add(panslider);
+
 	
 	
 	this.setLayout(new BorderLayout());
@@ -235,23 +268,25 @@ public Cadre() {
 	Scrollp = new JScrollPane(monArbre1);
 	
 	
-	pantree.add(Scrollp);
+
 	pantree.add(b_delete);
+	pantree.add(b_save);
+	pantree.add(b_charge);
+	pantree.add(Scrollp);
 	
 	
 	
 	
 	this.addMouseListener(list);
 	this.addMouseMotionListener(list);
-	this.setFocusable(true);
-	this.addKeyListener(list);
-	
 	
 	
 	
 
 	
-	this.setSize(1000, 800);
+
+	
+	this.setSize(1400, 800);
 	
 	
 	this.setVisible(true);
@@ -263,6 +298,7 @@ public Cadre() {
 
 	
 }
+
 
 
 public JButton getB_delete() {
