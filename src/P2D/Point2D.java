@@ -59,7 +59,9 @@ public class Point2D implements Objet_Geometrique{
 	
 	@Override
 	public boolean isIn(Point2D p) {
-		return (p.getX() == this.getX() && p.getY() == this.getY());		
+		
+		System.out.println(p.getX() - 10 < this.getX() && p.getX() + 10 > this.getX() && p.getY() - 10 < this.getY() && p.getY() + 10 > this.getY() );
+		return (p.getX() - 10 < this.getX() && p.getX() + 10 > this.getX() && p.getY() - 10 < this.getY() && p.getY() + 10 > this.getY() );		
 	}
 	@Override
 	public Point2D dupliquer() {

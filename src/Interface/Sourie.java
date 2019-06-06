@@ -10,6 +10,7 @@ import Objet_base.Arc;
 import Objet_base.Cercle;
 import Objet_base.Ellipse;
 import Objet_base.Losange;
+import Objet_base.Multisegment;
 import Objet_base.Objet_Geometrique;
 import Objet_base.Objet_de_base;
 import Objet_base.Rectangle;
@@ -32,6 +33,10 @@ public class Sourie  implements MouseListener, MouseMotionListener, KeyListener{
 	private int mode;
 	private double angle;
 	private boolean test;
+	private boolean boo;
+	private Multisegment ms;
+	private Multisegment ms2;
+	
 	private ArrayList<Objet_Geometrique> arrabouger;
 
 	public Sourie(Cadre ca) {
@@ -86,7 +91,6 @@ public class Sourie  implements MouseListener, MouseMotionListener, KeyListener{
 		
 		if(ca.getMode()==0) {
 			this.reset();
-			ca.cleanPreview();
 			this.POrigin = new Point2D(m.getX(), m.getY());
 			for(int i=0;i<ca.getArr().size();i++) {
 				if(ca.getArr().get(i).isIn(new Point2D(x, y))) {
@@ -159,8 +163,7 @@ public class Sourie  implements MouseListener, MouseMotionListener, KeyListener{
 					
 				}
 				else if(this.mode == 2) {
-					System.out.println(Objet_de_base.dist(new Point2D(m.getX(), m.getY()),this.PC));
-					System.out.println((int) Objet_de_base.dist(this.PC, this.POrigin));
+					
 					if ((Objet_de_base.dist(new Point2D(m.getX(), m.getY()),this.PC)<(int) Objet_de_base.dist(this.PC, this.POrigin)+5) && (Objet_de_base.dist(new Point2D(m.getX(), m.getY()),this.PC)>(int) Objet_de_base.dist(this.PC, this.POrigin)-5)){
 					this.P1 = new Point2D(m.getX(), m.getY());
 					this.mode = 3;}
@@ -187,7 +190,28 @@ public class Sourie  implements MouseListener, MouseMotionListener, KeyListener{
 					
 				}
 			}
-
+			
+			if(ca.getMode() == 7) {
+				
+				if(this.mode == 0) {
+					this.POrigin = new Point2D(m.getX(), m.getY());
+					this.mode++;
+				}else if(this.mode == 1) {
+					System.out.println(boo);
+					if(boo) {
+						if(ms.estUneExtremite(this.POrigin)) {
+							ms.add(new Segment(ms.getExtremite(this.POrigin), new Point2D(m.getX(), m.getY())));
+						}else {
+							ms.add(new Segment((this.POrigin), ms.getExtremite(new Point2D(m.getX(), m.getY()))));
+						}
+					}
+					else {
+						ca.getArr().add(ca.getPreview().get(0));
+					}
+					this.reset();
+					ca.updateJTree();
+					}
+			}
 
 
 				if(ca.getMode()==9) {
@@ -391,6 +415,42 @@ public class Sourie  implements MouseListener, MouseMotionListener, KeyListener{
 			
 		}
 		
+		if(ca.getMode() == 7 && this.mode == 1) {
+			
+			boo = false;
+			for(int i=0; i< ca.getArr().size();i++) {
+				if(ca.getArr().get(i) instanceof Multisegment) {
+					ms = (Multisegment) ca.getArr().get(i);
+					if(ms.estUneExtremite(new Point2D(m.getX(), m.getY()))) {
+						ms2 = ms.dupliquer();
+						ms2.add(new Segment(this.POrigin, ms2.getExtremite((new Point2D(m.getX(), m.getY())))));
+						ca.getPreview().set(0, ms2);
+						boo = true;
+						break;
+					} else if( ms.estUneExtremite(this.POrigin)) {
+						Multisegment ms2 = ms.dupliquer();
+						ms2.add(new Segment(ms2.getExtremite(this.POrigin), (new Point2D(m.getX(), m.getY()))));
+
+						ca.getPreview().set(0, ms2);
+						boo = true;
+						break;
+						
+						
+					}
+				}
+			}
+			if(!boo) {
+				
+				ca.getPreview().set(0, new Multisegment(new Segment(this.POrigin, new Point2D(m.getX(), m.getY())) ) );
+			
+			}
+			ca.repaint();
+			
+			
+		}
+		
+
+		
 		if(ca.getMode()==8 && this.mode == 1) {
 			this.PExtremite.setX(m.getX());
 			this.PExtremite.setY(m.getY());
@@ -434,7 +494,7 @@ public class Sourie  implements MouseListener, MouseMotionListener, KeyListener{
 
 	@Override
 	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

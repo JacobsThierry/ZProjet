@@ -64,13 +64,15 @@ public class listn implements ActionListener {
 			ca.setMode(2);
 		}
 		
+		if(source == ca.getB_losange()) {
+			ca.setMode(3);
+		}
+		
 		if(source==ca.getB_quadrangle()) {
 			ca.setMode(4);
 		}
 		
-		if(source == ca.getB_losange()) {
-			ca.setMode(3);
-		}
+
 		
 		if(source == ca.getB_segm()) {
 			ca.setMode(5);
@@ -79,12 +81,12 @@ public class listn implements ActionListener {
 		if(source== ca.getB_triangle()) {
 			ca.setMode(6);
 		}
+		if(source == ca.getB_multiseg()) {
+			ca.setMode(7);
+			
+		}
 		if(source == ca.getB_cercle()) {
 			ca.setMode(8);
-		}
-		
-		if(source==ca.getB_poin() ) {
-			ca.setMode(14);
 		}
 		if(source==ca.getB_arcdec()) {
 			ca.setMode(9);
@@ -92,6 +94,12 @@ public class listn implements ActionListener {
 		if(source==ca.getB_elipse()) {
 			ca.setMode(10);
 		}
+		
+		if(source==ca.getB_poin() ) {
+			ca.setMode(14);
+		}
+
+
 		
 		if(source==ca.getB_delete()) {
 			DefaultTreeModel model=(DefaultTreeModel) ca.getMonArbre1().getModel();
@@ -174,6 +182,7 @@ public class listn implements ActionListener {
 		         if(id==6) {
 		        	 ca.getArr().add(new Triangle(new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt())) );
 		         }
+		         
 		         if(id==8) {
 		        	 ca.getArr().add(new Cercle(new Point2D(sc.nextInt(),sc.nextInt()),sc.nextInt()));
 		         }

@@ -24,6 +24,12 @@ public class Multisegment extends Objet_de_base{
 		this.arr = new ArrayList<Segment>();
 	}
 
+	public Multisegment(Segment s) {
+		super(s.getPOrigine());
+		this.arr = new ArrayList<Segment>();
+		this.arr.add(s);
+	}
+	
 	@Override
 	public void deplacer(Vecteur2D v) {
 		this.getPOrigine().deplacer(v);
@@ -42,7 +48,36 @@ public class Multisegment extends Objet_de_base{
 		}
 		return false;
 	}
+	
+	public boolean estUneExtremite(Point2D p) {
+		for(int i =0 ; i< arr.size();i++) {
+			if(arr.get(i).getPOrigine().isIn(p) || arr.get(i).getP1().isIn(p)) {
+				return true;
+			}
+		}
+		return false;
+	}	
+	
+public ArrayList<Segment> getArr() {
+		return arr;
+	}
 
+	public void setArr(ArrayList<Segment> arr) {
+		this.arr = arr;
+	}
+
+public Point2D getExtremite(Point2D p) {
+	for(int i=0; i < arr.size(); i++) {
+		if(arr.get(i).getPOrigine().isIn(p)) {
+			return arr.get(i).getPOrigine();
+		}
+		if(arr.get(i).getP1().isIn(p)) {
+			return arr.get(i).getP1();
+		}
+	}
+	return new Point2D();
+}
+	
 	@Override
 	public Multisegment dupliquer() {
 		ArrayList<Segment> arra = new ArrayList<Segment>();
@@ -51,6 +86,10 @@ public class Multisegment extends Objet_de_base{
 		}
 		return new Multisegment(this.getPOrigine().dupliquer(),arra);
 		
+	}
+	
+	public void add(Segment s) {
+		arr.add(s);
 	}
 
 	@Override
@@ -70,8 +109,24 @@ public class Multisegment extends Objet_de_base{
 
 	@Override
 	public DefaultMutableTreeNode getNode() {
-		// TODO Auto-generated method stub
-		return null;
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode("Multi-segment");
+		node.add(this.getPOrigine().getNode("Po"));
+		
+		for(int i=0; i< this.arr.size(); i++) {
+			node.add(arr.get(i).getNode("Segment " + i));
+		}
+		return node;		
+	}
+
+	
+	public DefaultMutableTreeNode getNode(String str) {
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode(str);
+		node.add(this.getPOrigine().getNode("Po"));
+		
+		for(int i=0; i< this.arr.size(); i++) {
+			node.add(arr.get(i).getNode("Segment " + i));
+		}
+		return node;		
 	}
 
 }
