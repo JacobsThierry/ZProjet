@@ -284,7 +284,7 @@ public Cadre() {
 	
 
 	
-
+	this.addKeyListener(list);
 	
 	this.setSize(1400, 800);
 	
