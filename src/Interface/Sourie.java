@@ -132,6 +132,8 @@ public class Sourie  implements MouseListener, MouseMotionListener, KeyListener{
 					ca.getArr().add(ca.getPreview().get(0) );
 					ca.updateJTree();
 					this.reset();
+					ca.updateJTree();
+
 				}
 			}
 			
@@ -147,6 +149,8 @@ public class Sourie  implements MouseListener, MouseMotionListener, KeyListener{
 				else if(this.mode == 2) {
 					ca.addforme((ca.getPreview().get(0)));
 					this.reset();
+					ca.updateJTree();
+
 				}
 			}
 			if(ca.getMode()==4){
@@ -264,6 +268,7 @@ public class Sourie  implements MouseListener, MouseMotionListener, KeyListener{
 			}
 		
 		ca.repaint();
+		ca.updateJTree();
 		
 	}}
 	
