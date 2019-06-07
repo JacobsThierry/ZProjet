@@ -14,6 +14,7 @@ import javax.swing.tree.TreePath;
 
 import Objet_base.Cercle;
 import Objet_base.Losange;
+import Objet_base.Multisegment;
 import Objet_base.Quadrangle;
 import Objet_base.Rectangle;
 import Objet_base.Segment;
@@ -165,7 +166,7 @@ public class listn implements ActionListener {
 		      }
 		}
 		if(source==ca.getB_charge()) {
-			System.out.println("defef");
+			ArrayList<Segment> arr = new ArrayList<Segment>();
 			 try
 		        {
 				 Scanner sc=new Scanner(file);
@@ -189,7 +190,7 @@ public class listn implements ActionListener {
 		         }
 			if(id==7){	       
 		        	
-		        	POrigin=new Point2D(sc.nextInt(),sc.nextInt());
+		        	Point2D POrigin = new Point2D(sc.nextInt(),sc.nextInt());
 		        	int v=sc.nextInt();
 		        	for(int i=0;i<v;i++){
 		        			arr.add(new Segment(new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt())));}
