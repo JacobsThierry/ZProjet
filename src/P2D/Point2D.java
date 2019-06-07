@@ -57,6 +57,10 @@ public class Point2D implements Objet_Geometrique{
 		return new Point2D(x + v.getX(), y + v.getY() );
 	}
 	
+	public String toString2() {
+		return this.x+" "+this.y+" ";
+	}
+	
 	@Override
 	public boolean isIn(Point2D p) {
 		
