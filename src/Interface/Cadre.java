@@ -910,7 +910,15 @@ public void setScrollp(JScrollPane scrollp) {
 	Scrollp = scrollp;
 }
 
+public JLabel getLabel() {
+	return label;
+}
 
+
+
+public void setLabel(JLabel label) {
+	this.label = label;
+}
 
 
 
