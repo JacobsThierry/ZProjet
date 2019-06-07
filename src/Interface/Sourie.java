@@ -219,16 +219,13 @@ public class Sourie  implements MouseListener, MouseMotionListener, KeyListener{
 
 
 				if(ca.getMode()==9) {
-						if(this.mode == 0) {
-				
-							this.mode++;
-						}
-						else if(this.mode == 1) {
+						
+						 if(this.mode == 0) {
 							this.POrigin = new Point2D(m.getX(), m.getY());
-							this.mode = 2;
+							this.mode = 1;
 							
 						}
-						else if(this.mode == 2) {
+						else if(this.mode == 1) {
 							ca.addforme((ca.getPreview().get(0)));
 							this.reset();
 						}
