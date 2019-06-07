@@ -50,6 +50,7 @@ public class listn implements ActionListener {
 		if (source == ca.getB_delet()) {
 			ca.getArr().clear();
 			ca.repaint();
+			ca.updateJTree();
 		}
 		
 		if(source == ca.getB_deplace() ) {
