@@ -17,7 +17,7 @@ public class Segment extends Objet_de_base{
 		this.p1 = p1;
 	}
 
-	public Segment(Point2D pOrigine, double angle, int longueur) { //crée un segment d'angle angle et de centre POrigine
+	public Segment(Point2D pOrigine, double angle, int longueur) { //crÃ©e un segment d'angle angle et de centre POrigine
 		super(new Point2D());
 		if(angle < Math.PI) {
 		this.setPOrigine(new Point2D( (int) (pOrigine.getX() - Math.cos(angle)* longueur/2), (int) (pOrigine.getY() + Math.sin(angle) * longueur/2 )));
@@ -138,6 +138,9 @@ public DefaultMutableTreeNode getNode(String nom) {
 	public String toString() {
 	return "5 "+this.getPOrigine().getX()+" "+this.getPOrigine().getY()+" "+this.getP1().getX()+" "+this.getP1().getY();
 }
+	public String toString2() {
+		return this.getPOrigine().getX()+" "+this.getPOrigine().getY()+" "+this.getP1().getX()+" "+this.getP1().getY()+" ";
+	}
 	
 
 }
