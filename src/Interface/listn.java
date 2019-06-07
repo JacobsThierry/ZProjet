@@ -54,60 +54,74 @@ public class listn implements ActionListener {
 		
 		if(source == ca.getB_deplace() ) {
 			ca.setMode(0);
+			ca.getLabel().setText("Mode: Déplacer");
 		}
 		
 		if(source == ca.getB_quadri()) {
 			ca.setMode(1);
+			ca.getLabel().setText("Mode: Quadrilatère");
 		}
 		
 		if(source== ca.getB_rect()) {
 			
 			ca.setMode(2);
+			ca.getLabel().setText("Mode: Rectangle");
 		}
 		
 		if(source == ca.getB_losange()) {
 			ca.setMode(3);
+			ca.getLabel().setText("Mode: Losange");
 		}
 		
 		if(source==ca.getB_quadrangle()) {
 			ca.setMode(4);
+			ca.getLabel().setText("Mode: Quadrangle");
 		}
 		
 
 		
 		if(source == ca.getB_segm()) {
 			ca.setMode(5);
+			ca.getLabel().setText("Mode: Segment");
 		}
 		
 		if(source== ca.getB_triangle()) {
 			ca.setMode(6);
+			ca.getLabel().setText("Mode: Triangle");
 		}
 		if(source == ca.getB_multiseg()) {
 			ca.setMode(7);
+			ca.getLabel().setText("Mode: Multisegment");
 			
 		}
 		if(source == ca.getB_cercle()) {
 			ca.setMode(8);
+			ca.getLabel().setText("Mode: Cercle");
 		}
 		if(source==ca.getB_arcdec()) {
 			ca.setMode(9);
+			ca.getLabel().setText("Mode: Arc");
 		}
 		if(source==ca.getB_elipse()) {
 			ca.setMode(10);
+			ca.getLabel().setText("Mode: Elipse");
 		}
 		
 		if(source == ca.getB_multirectangle()) {
 			ca.setMode(13);
+			ca.getLabel().setText("Mode: Multirectangle");
 			
 		}
 		
 		if(source==ca.getB_poin() ) {
 			ca.setMode(14);
+			ca.getLabel().setText("Mode: Point");
 		}
 
 
 		
 		if(source==ca.getB_delete()) {
+			ca.getLabel().setText("Mode: ");
 			DefaultTreeModel model=(DefaultTreeModel) ca.getMonArbre1().getModel();
 			TreePath[] paths= ca.getMonArbre1().getSelectionPaths();
 		      if (paths != null) {
@@ -125,7 +139,7 @@ public class listn implements ActionListener {
           }
 		}
 		if(source==ca.getB_save()) {
-		
+		ca.getLabel().setText("Mode: ");
 
 	        try
 	        {
@@ -148,24 +162,11 @@ public class listn implements ActionListener {
 		
 		
 		}
-		if(source==ca.getB_delete()) {
-			DefaultTreeModel model=(DefaultTreeModel) ca.getMonArbre1().getModel();
-			TreePath[] paths= ca.getMonArbre1().getSelectionPaths();
-		      if (paths != null) {
-                  for (TreePath path : paths) {
-                      DefaultMutableTreeNode node = (DefaultMutableTreeNode) path.getLastPathComponent();
-                      DefaultMutableTreeNode node1 = (DefaultMutableTreeNode) ca.getMonArbre1().getModel().getRoot();
-                      if(node.getParent()==node.getRoot()) {
-                    	  int id = ca.getMonArbre1().getModel().getIndexOfChild(node1, node);
-                    		ca.getArr().remove(id);
-                    		model.removeNodeFromParent(node);
-                
-                      ca.repaint();
-                  }
-              }
+		
 		      }
 		}
 		if(source==ca.getB_charge()) {
+			ca.getLabel().setText("Mode: ");
 			ArrayList<Segment> arr = new ArrayList<Segment>();
 			 try
 		        {
