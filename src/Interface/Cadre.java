@@ -152,32 +152,44 @@ public Cadre() {
 	b_save=new JButton("Sauvegarder");
 	b_charge = new JButton("Charger");
 	b_delete= new JButton("Supprimer l'element");
-	
+		b_deplace.setToolTipText("Utilisez cette outil pour déplacer une forme. Cliquer sur une ou plusieurs forme, déplacez la souris, relevez le clic !");
 	b_deplace.addActionListener(lis);
     b_deplace.setPreferredSize(new Dimension(120, 40));
 	panbtn2.add(b_deplace);
 	b_quadri.addActionListener(lis);
+	b_quadri.setToolTipText("Utilisez cette outil pour crée un quadrilatère. Cliquez 4 fois pour placer les 4 points du quadrilatère !");
+
     b_quadri.setPreferredSize(new Dimension(120, 40));
 	panbtn2.add(b_quadri);
 	b_rect.addActionListener(lis);
     b_rect.setPreferredSize(new Dimension(120, 40));
     panbtn2.add(b_rect);
 	b_losange.addActionListener(lis);
+	b_losange.setToolTipText("Utilisez cette outil pour crée un losange. Cliquez 2 fois pour placer la première diagonale, puis recliquer pour choisir la longueur de la seconde diagonale.");
+
 	b_losange.setPreferredSize(new Dimension(120, 40));
 	panbtn2.add(b_losange);
 	b_quadrangle.addActionListener(lis);
+	b_quadrangle.setToolTipText("Utilisez cette outil pour crée un quadrangle. Commencez par tracer un cercle, puis placez 4 points sur le cercle pour crée un quadrangle.");
+
 	b_quadrangle.setPreferredSize(new Dimension(120, 40));
 	panbtn2.add(b_quadrangle);
 	b_segm.addActionListener(lis);
+	b_segm.setToolTipText("Utilisez cette outil pour crée un segment. Cliquer simplement aux extremités du segment.");
+
 	b_segm.setPreferredSize(new Dimension(120, 40));
 	panbtn2.add(b_segm);
 	b_triangle.addActionListener(lis);
+	b_triangle.setToolTipText("Utilisez cette outil pour crée un triangle. CLiquer 3 fois a l'emplacement des 3 points du triangle pour le crée.");
+
 	b_triangle.setPreferredSize(new Dimension(120, 40));
 	panbtn2.add(b_triangle);
 	b_multiseg.addActionListener(lis);
 	b_multiseg.setPreferredSize(new Dimension(120, 40));
 	panbtn2.add(b_multiseg);
 	b_cercle.addActionListener(lis);
+	b_cercle.setToolTipText("Utilisez cette outil pour crée un cercle. Cliquer en son centre, puis déplacer la souris pour choisir son rayon. Enfin, cliquer une deuxième fois pour finaliser le cercle.");
+
 	b_cercle.setPreferredSize(new Dimension(120, 40));
 	panbtn2.add(b_cercle);
 	b_arcdec.addActionListener(lis);
@@ -196,12 +208,16 @@ public Cadre() {
 	b_multirectangle.setPreferredSize(new Dimension(120, 40));
 	panbtn2.add(b_multirectangle);
 	b_poin.addActionListener(lis);
+	b_poin.setToolTipText("Utilisez cette outil pour placer des points. Cliquez simplement la ou vous voulez placer un point !");
+
 	b_poin.setPreferredSize(new Dimension(120, 40));
 	panbtn2.add(b_poin);
 	b_save.addActionListener(lis);
 	b_save.setBackground(Color.CYAN);
 	b_charge.addActionListener(lis);
 	b_charge.setBackground(Color.ORANGE);
+	b_delet.setToolTipText("Supprimez toute les formes en clicant sur ce bouton !");
+
 	b_delet.setPreferredSize(new Dimension(120, 40));
 	panbtn2.add(this.b_delet);
 	b_delete.addActionListener(lis);
