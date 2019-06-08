@@ -20,7 +20,8 @@ import Objet_base.Rectangle;
 import Objet_base.Segment;
 import Objet_base.Triangle;
 import P2D.Point2D;
-import javafx.scene.shape.Ellipse;
+import javafx.stage.FileChooser;
+import Objet_base.Ellipse;
 
 
 public class listn implements ActionListener {
@@ -171,8 +172,19 @@ public class listn implements ActionListener {
 			ArrayList<Segment> arr = new ArrayList<Segment>();
 			 try
 		        {
-				 Scanner sc=new Scanner(file);
-				 while(sc.hasNextInt()) {
+				 
+				JFileChooser chooser = new JFileChooser();
+				 FileNameExtensionFilter filter = new FileNameExtensionFilter(
+					        ".txt",  "txt");
+				 chooser.setFileFilter(filter);
+				    int returnVal = chooser.showOpenDialog(getParent());
+				    if(returnVal == JFileChooser.APPROVE_OPTION) {
+				       System.out.println("Fichier chargé : " +
+				            chooser.getSelectedFile().getName());
+				    }
+			 file =chooser.getSelectedFile();
+			 Scanner sc=new Scanner(file);
+			 while(sc.hasNextInt()) {
 		         int id = sc.nextInt();
 		    
 		         if(id==2) {		        	 
