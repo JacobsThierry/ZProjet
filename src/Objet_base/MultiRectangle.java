@@ -92,7 +92,7 @@ public class MultiRectangle extends Objet_de_base{
 		for(int i=0;i<arr.size();i++){
 			segm=segm+arr.get(i).toString2();
 		}
-		return "7 "+this.getPOrigine().toString2()+this.getArr().size()+" "+segm;
+		return "13 "+this.getPOrigine().toString2()+this.getArr().size()+" "+segm;
 		
 	}
 	
