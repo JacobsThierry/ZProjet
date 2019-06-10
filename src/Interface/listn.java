@@ -1,13 +1,16 @@
 package Interface;
 
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.swing.JComponent;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
@@ -20,12 +23,14 @@ import Objet_base.Rectangle;
 import Objet_base.Segment;
 import Objet_base.Triangle;
 import P2D.Point2D;
-import javafx.stage.FileChooser;
-import Objet_base.Ellipse;
 
 
-public class listn implements ActionListener {
+public class listn  extends JComponent implements ActionListener {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Cadre ca;
 	File file = new File("save.txt");
 
@@ -165,8 +170,8 @@ public class listn implements ActionListener {
 		
 		}
 		
-		      }
-		}
+		      
+		
 		if(source==ca.getB_charge()) {
 			ca.getLabel().setText("Mode: ");
 			ArrayList<Segment> arr = new ArrayList<Segment>();
@@ -177,7 +182,7 @@ public class listn implements ActionListener {
 				 FileNameExtensionFilter filter = new FileNameExtensionFilter(
 					        ".txt",  "txt");
 				 chooser.setFileFilter(filter);
-				    int returnVal = chooser.showOpenDialog(getParent());
+				    int returnVal = chooser.showOpenDialog(getParent()); 
 				    if(returnVal == JFileChooser.APPROVE_OPTION) {
 				       System.out.println("Fichier chargé : " +
 				            chooser.getSelectedFile().getName());

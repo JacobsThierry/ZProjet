@@ -34,11 +34,15 @@ public class MultiRectangle extends Objet_de_base{
 
 	@Override
 	public void deplacer(Vecteur2D v) {
-		this.getPOrigine().deplacer(v);
+		
 		for(int i = 0; i < this.arr.size();i++) {
 			arr.get(i).deplacer(v);
 		}
 		
+	}
+	
+	public void add(Rectangle r) {
+		this.arr.add(r);
 	}
 
 	@Override
@@ -78,6 +82,14 @@ public class MultiRectangle extends Objet_de_base{
 		}
 		return node;
 		
+	}
+
+	public ArrayList<Rectangle> getArr() {
+		return arr;
+	}
+
+	public void setArr(ArrayList<Rectangle> arr) {
+		this.arr = arr;
 	}
 
 	@Override

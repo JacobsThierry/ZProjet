@@ -10,6 +10,7 @@ import Objet_base.Arc;
 import Objet_base.Cercle;
 import Objet_base.Ellipse;
 import Objet_base.Losange;
+import Objet_base.MultiRectangle;
 import Objet_base.Multisegment;
 import Objet_base.Objet_Geometrique;
 import Objet_base.Objet_de_base;
@@ -49,7 +50,16 @@ public class Sourie  implements MouseListener, MouseMotionListener, KeyListener{
 	}
 	
 	public void reset(){
-
+		
+		if(ca.getMode()==13) {	
+			try {
+				ca.getArr().add(ca.getPreview().get(1));
+				ca.updateJTree();
+				ca.repaint();
+			} catch (Exception e) {
+				;
+			}
+		}
 		
 		this.POrigin = new Point2D();
 		this.PExtremite = new Point2D();
@@ -132,7 +142,6 @@ public class Sourie  implements MouseListener, MouseMotionListener, KeyListener{
 					ca.getArr().add(ca.getPreview().get(0) );
 					ca.updateJTree();
 					this.reset();
-					ca.updateJTree();
 
 				}
 			}
@@ -201,7 +210,7 @@ public class Sourie  implements MouseListener, MouseMotionListener, KeyListener{
 					this.POrigin = new Point2D(m.getX(), m.getY());
 					this.mode++;
 				}else if(this.mode == 1) {
-					System.out.println(boo);
+					
 					if(boo) {
 						if(ms.estUneExtremite(this.POrigin)) {
 							ms.add(new Segment(ms.getExtremite(this.POrigin), new Point2D(m.getX(), m.getY())));
@@ -260,6 +269,31 @@ public class Sourie  implements MouseListener, MouseMotionListener, KeyListener{
 					
 					
 				}
+				
+				if(ca.getMode() == 13) {
+					if(this.mode == 0) {
+						this.POrigin = new Point2D(m.getX(), m.getY());
+						ca.getPreview().add(1, new MultiRectangle(POrigin));
+						this.mode++;
+					}
+					else if(this.mode == 1) {
+						this.P1 = new Point2D(m.getX(), m.getY());
+						mode++;
+					}
+					else if(this.mode == 2) {
+						MultiRectangle mr;
+						mr = (MultiRectangle) ca.getPreview().get(1);
+						Rectangle r = (Rectangle) ca.getPreview().get(0); 
+						mr.add(r);
+						mode++;
+						
+					}
+					else if(mode == 3) {
+						this.POrigin = new Point2D(m.getX(), m.getY());
+						this.mode = 1;
+					}
+				}
+				
 			if(ca.getMode()==14) {
 				ca.addforme(ca.getPreview().get(0));
 			}
@@ -326,11 +360,11 @@ public class Sourie  implements MouseListener, MouseMotionListener, KeyListener{
 				}
 			}
 			
-		if(ca.getMode()==2 || ca.getMode() == 10) {
+		if(ca.getMode()==2 || ca.getMode() == 10 || ca.getMode() == 13) {
 			if(this.mode == 1) {
 				ca.getPreview().set(0, new Segment(this.POrigin, new Point2D(m.getX(), m.getY())));
 			}
-			else if(this.mode == 2 && ca.getMode() == 2) {
+			else if(this.mode == 2 && (ca.getMode() == 2 || ca.getMode() == 13)) {
 				int dist = new Triangle(this.POrigin, this.P1, new Point2D(m.getX(), m.getY())).getHauteur(); //les distances et hauteur sont en valeur absolue. On cherche donc a savoir de quel côté on doit dessiné le rectangle. On crée donc 2 rectangle allant dans les 2 senses, et on garde celui dont le centre du côté est le plus proche de la sourie.
 				Rectangle rect = new Rectangle(new Segment(this.POrigin, this.P1) , dist, ((new Segment(this.POrigin, this.P1).getAngle())));
 				Rectangle rect2 = new Rectangle(new Segment(this.POrigin, this.P1) , -dist, ((new Segment(this.POrigin, this.P1).getAngle())));
