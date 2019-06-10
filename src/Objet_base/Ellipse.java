@@ -22,6 +22,12 @@ public class Ellipse extends Rectangle {
 		this.P4 = p4;
 		this.angle=angle;
 	}
+	
+	public Ellipse(Point2D pOrigine, Point2D p1, Point2D p2, Point2D p3, Point2D p4,double angle) {
+		super(pOrigine, p1, p2, p3);
+		this.P4 = p4;
+		this.angle=angle;
+	}
 
 	public Ellipse(Segment s, int longeur, double angle) {
 		super(s.getMilieux(), s.getPOrigine(), new Segment( s.getMilieux(), s.getAngle() + (Math.PI/2), longeur ).getPOrigine(), s.getP1());
@@ -64,17 +70,26 @@ public Point2D getP4() {
 
 @Override
 public void deplacer(Vecteur2D v) {
-	// TODO Auto-generated method stub
+	this.setPOrigine(this.getPOrigine().appliquerVecteur(v));
+	this.setP1(this.getP1().appliquerVecteur(v));
+	this.setP2(this.getP2().appliquerVecteur(v));
+	this.setP3(this.getP3().appliquerVecteur(v));
+	this.setP4(this.getP4().appliquerVecteur(v));
 	
 }
 
 @Override
 public boolean isIn(Point2D p) {
-	// TODO Auto-generated method stub
-	return false;
+	Rectangle r = new Rectangle(this.getP1(), this.getP2(), this.getP3(), this.getP4());
+	return r.isIn(p);
+	
 }
 
-
+public Ellipse dupliquer() {
+	return new Ellipse(this.getPOrigine().dupliquer(), this.getP1().dupliquer(),
+			this.getP2().dupliquer(), this.getP3().dupliquer(), this.getP4().dupliquer(),
+			this.getAngle());
+}
 
 
 @Override

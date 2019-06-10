@@ -67,7 +67,7 @@ public class Arc implements Objet_Geometrique {
 		node.add(n2);
 		
 		
-		return null;
+		return node;
 	}
 
 	public Point2D getP1() {

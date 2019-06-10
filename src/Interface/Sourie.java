@@ -10,6 +10,7 @@ import Objet_base.Arc;
 import Objet_base.Cercle;
 import Objet_base.Ellipse;
 import Objet_base.Losange;
+import Objet_base.MultiEllipse;
 import Objet_base.MultiRectangle;
 import Objet_base.Multisegment;
 import Objet_base.Objet_Geometrique;
@@ -51,7 +52,7 @@ public class Sourie  implements MouseListener, MouseMotionListener, KeyListener{
 	
 	public void reset(){
 		
-		if(ca.getMode()==13) {	
+		if(ca.getMode()==13 || ca.getMode() == 12) {	
 			try {
 				ca.getArr().add(ca.getPreview().get(1));
 				ca.updateJTree();
@@ -270,23 +271,37 @@ public class Sourie  implements MouseListener, MouseMotionListener, KeyListener{
 					
 				}
 				
-				if(ca.getMode() == 13) {
+				if(ca.getMode() == 13 || ca.getMode() == 12) {
+					System.out.println(ca.getMode());
 					if(this.mode == 0) {
 						this.POrigin = new Point2D(m.getX(), m.getY());
-						ca.getPreview().add(1, new MultiRectangle(POrigin));
+						
+						if(ca.getMode() == 13) {
+						
+							ca.getPreview().add(1, new MultiRectangle(POrigin));
+						}else if(ca.getMode() == 12) {
+							ca.getPreview().add(1, new MultiEllipse(POrigin));
+							
+						}
 						this.mode++;
 					}
 					else if(this.mode == 1) {
 						this.P1 = new Point2D(m.getX(), m.getY());
 						mode++;
 					}
-					else if(this.mode == 2) {
+					else if(this.mode == 2 && ca.getMode() == 13) {
 						MultiRectangle mr;
 						mr = (MultiRectangle) ca.getPreview().get(1);
 						Rectangle r = (Rectangle) ca.getPreview().get(0); 
 						mr.add(r);
 						mode++;
 						
+					} else if(this.mode == 2 && ca.getMode() == 12) {
+						MultiEllipse me;
+						me = (MultiEllipse) ca.getPreview().get(1);
+						Ellipse e = (Ellipse) ca.getPreview().get(0);
+						me.add(e);
+						mode++;
 					}
 					else if(mode == 3) {
 						this.POrigin = new Point2D(m.getX(), m.getY());
@@ -360,7 +375,7 @@ public class Sourie  implements MouseListener, MouseMotionListener, KeyListener{
 				}
 			}
 			
-		if(ca.getMode()==2 || ca.getMode() == 10 || ca.getMode() == 13) {
+		if(ca.getMode()==2 || ca.getMode() == 10 || ca.getMode() == 13 || ca.getMode() == 12) {
 			if(this.mode == 1) {
 				ca.getPreview().set(0, new Segment(this.POrigin, new Point2D(m.getX(), m.getY())));
 			}
@@ -377,7 +392,7 @@ public class Sourie  implements MouseListener, MouseMotionListener, KeyListener{
 				}
 								
 				
-			}else if(this.mode == 2 && ca.getMode() == 10) {
+			}else if(this.mode == 2 && (ca.getMode() == 10 || ca.getMode() == 12)) {
 				ca.getPreview().set(0, new Ellipse(new Segment(this.POrigin, this.P1) , (new Triangle(this.POrigin, this.P1, new Point2D(m.getX(), m.getY())) ).getHauteur(), ((new Segment(this.POrigin, this.P1).getAngle())) ));
 			}
 			

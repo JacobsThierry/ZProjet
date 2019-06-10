@@ -282,6 +282,7 @@ public Cadre() {
 	monArbre1.setPreferredSize(new Dimension(180,9999));
 	
 	Scrollp = new JScrollPane(monArbre1);
+	Scrollp.setPreferredSize(new Dimension(180, 9999));
 	
 	
 
@@ -362,13 +363,14 @@ public void updateJTree() {
 	}
 
 	monArbre1 = new JTree(racine1);
-	monArbre1.setPreferredSize(new Dimension(pantree.getWidth()- 20,pantree.getHeight()));
+	
 	
 	for(int i=0; i< monArbre1.getRowCount();i++) {
 		monArbre1.expandRow(i);
 	}
 	
 	Scrollp = new JScrollPane(monArbre1);
+	Scrollp.setPreferredSize(new Dimension(180, this.getHeight() - this.getPanbtn().getHeight() - 50));
 	
 	pantree.add(Scrollp);
 	
