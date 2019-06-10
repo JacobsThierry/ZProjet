@@ -60,10 +60,10 @@ public class Arc implements Objet_Geometrique {
 		n.add((new DefaultMutableTreeNode(this.haut)));
 		node.add(n);
 		DefaultMutableTreeNode n1 =   (new DefaultMutableTreeNode ("Largeur"));
-		n.add((new DefaultMutableTreeNode(this.larg)));
+		n1.add((new DefaultMutableTreeNode(this.larg)));
 		node.add(n1);
 		DefaultMutableTreeNode n2 =   (new DefaultMutableTreeNode ("Angle"));
-		n.add((new DefaultMutableTreeNode(this.angle)));
+		n2.add((new DefaultMutableTreeNode(this.angle)));
 		node.add(n2);
 		
 		
