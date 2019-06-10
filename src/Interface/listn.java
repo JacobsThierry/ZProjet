@@ -16,7 +16,9 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
 
 import Objet_base.Cercle;
+import Objet_base.Ellipse;
 import Objet_base.Losange;
+import Objet_base.MultiRectangle;
 import Objet_base.Multisegment;
 import Objet_base.Quadrangle;
 import Objet_base.Rectangle;
@@ -61,12 +63,12 @@ public class listn  extends JComponent implements ActionListener {
 		
 		if(source == ca.getB_deplace() ) {
 			ca.setMode(0);
-			ca.getLabel().setText("Mode: Déplacer");
+			ca.getLabel().setText("Mode: DÃ©placer");
 		}
 		
 		if(source == ca.getB_quadri()) {
 			ca.setMode(1);
-			ca.getLabel().setText("Mode: Quadrilatère");
+			ca.getLabel().setText("Mode: QuadrilatÃ¨re");
 		}
 		
 		if(source== ca.getB_rect()) {
@@ -182,6 +184,7 @@ public class listn  extends JComponent implements ActionListener {
 		
 		if(source==ca.getB_charge()) {
 			ca.getLabel().setText("Mode: ");
+			ArrayList<Rectangle> arr2 = new ArrayList<Rectangle>();
 			ArrayList<Segment> arr = new ArrayList<Segment>();
 			 try
 		        {
@@ -192,7 +195,7 @@ public class listn  extends JComponent implements ActionListener {
 				 chooser.setFileFilter(filter);
 				    int returnVal = chooser.showOpenDialog(getParent()); 
 				    if(returnVal == JFileChooser.APPROVE_OPTION) {
-				       System.out.println("Fichier chargé : " +
+				       System.out.println("Fichier chargÃ© : " +
 				            chooser.getSelectedFile().getName());
 				    }
 			 file =chooser.getSelectedFile();
@@ -224,13 +227,22 @@ public class listn  extends JComponent implements ActionListener {
 		        	 ca.getArr().add(new Multisegment(POrigin,arr));
 				 }
 		        
-		         
+			
+	        
 		         if(id==8) {
 		        	 ca.getArr().add(new Cercle(new Point2D(sc.nextInt(),sc.nextInt()),sc.nextInt()));
 		         }
 		         if(id==10) {
-		        	 //ca.getArr().add(new Ellipse(new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),sc.nextInt()));
+		        	 ca.getArr().add(new Ellipse(new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),sc.nextInt()));
 		         }
+		         if(id==13){	       
+			        	
+			        	Point2D POrigin = new Point2D(sc.nextInt(),sc.nextInt());
+			        	int v=sc.nextInt();
+			        	for(int i=0;i<v;i++){
+			        			arr2.add(new Rectangle(new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt())));}
+			        	 ca.getArr().add(new MultiRectangle(POrigin,arr2));
+					 }
 		         if(id==14) {
 		        	 ca.getArr().add(new Point2D(sc.nextInt(),sc.nextInt()));
 		         }
