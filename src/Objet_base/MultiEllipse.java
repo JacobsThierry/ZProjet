@@ -8,28 +8,28 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import P2D.Point2D;
 import P2D.Vecteur2D;
 
-public class MultiEllipse extends Objet_de_base{
-
-	
-
-	private ArrayList<Ellipse> arr;
+public class MultiRectangle extends Objet_de_base{
 	
 	
 
-	public MultiEllipse(Point2D pOrigine, ArrayList<Ellipse> arr) {
+	private ArrayList<Rectangle> arr;
+	
+	
+
+	public MultiRectangle(Point2D pOrigine, ArrayList<Rectangle> arr) {
 		super(pOrigine);
 		this.arr = arr;
 	}
 	
-	public MultiEllipse(Point2D pOrigine) {
+	public MultiRectangle(Point2D pOrigine) {
 		super(pOrigine);
-		this.arr = new ArrayList<Ellipse>();
+		this.arr = new ArrayList<Rectangle>();
 	}
 	
-	public MultiEllipse(Ellipse el) {
-		super(el.getPOrigine().dupliquer());
-		this.arr = new ArrayList<Ellipse>();
-		arr.add(el);
+	public MultiRectangle(Rectangle rect) {
+		super(rect.getPOrigine().dupliquer());
+		this.arr = new ArrayList<Rectangle>();
+		arr.add(rect);
 	}
 
 	@Override
@@ -41,8 +41,8 @@ public class MultiEllipse extends Objet_de_base{
 		
 	}
 	
-	public void add(Ellipse e) {
-		this.arr.add(e);
+	public void add(Rectangle r) {
+		this.arr.add(r);
 	}
 
 	@Override
@@ -56,39 +56,39 @@ public class MultiEllipse extends Objet_de_base{
 	}
 
 	@Override
-	public MultiEllipse dupliquer() {
-		ArrayList<Ellipse> arr = new ArrayList<Ellipse>();  
+	public MultiRectangle dupliquer() {
+		ArrayList<Rectangle> arr = new ArrayList<Rectangle>();  
 		for(int i = 0 ; i < this.arr.size(); i++) {
 			arr.add(this.arr.get(i).dupliquer());
 		}
-		return new MultiEllipse(this.getPOrigine().dupliquer(), arr);
+		return new MultiRectangle(this.getPOrigine().dupliquer(), arr);
 	}
 
 	@Override
 	public Objet_Geometrique appliquerVecteur(Vecteur2D v) {
 		
-		MultiEllipse arra = this.dupliquer();
+		MultiRectangle arra = this.dupliquer();
 		arra.deplacer(v);
 		return arra;
 	}
 
 	@Override
 	public DefaultMutableTreeNode getNode() {
-		DefaultMutableTreeNode node = new DefaultMutableTreeNode("Multi-Ellipse");
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode("Multi-Rectangle");
 		node.add(this.getPOrigine().getNode("Po"));
 		
 		for(int i=0; i< this.arr.size(); i++) {
-			node.add(arr.get(i).getNode("Ellipse " + (i+1)));
+			node.add(arr.get(i).getNode("Rectangle " + (i+1)));
 		}
 		return node;
 		
 	}
 
-	public ArrayList<Ellipse> getArr() {
+	public ArrayList<Rectangle> getArr() {
 		return arr;
 	}
 
-	public void setArr(ArrayList<Ellipse> arr) {
+	public void setArr(ArrayList<Rectangle> arr) {
 		this.arr = arr;
 	}
 
@@ -99,13 +99,15 @@ public class MultiEllipse extends Objet_de_base{
 		}
 		
 	}
-	public String toString(){
+		public String toString(){
 		String segm="";
 		for(int i=0;i<arr.size();i++){
 			segm=segm+arr.get(i).toString2();
 		}
-		return "12 "+this.getPOrigine().toString2()+this.getArr().size()+" "+segm;
+		return "13 "+this.getPOrigine().toString2()+this.getArr().size()+" "+segm;
 		
 	}
+	
+	
 
 }
