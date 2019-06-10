@@ -1,22 +1,22 @@
 package Interface;
 
 import java.io.File;
-import java.io.FileNotFoundException;
+
 import java.io.PrintWriter;  
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
+
 import java.awt.Graphics;
-import java.awt.GridBagLayout;
+
 import java.awt.GridLayout;
-import java.awt.ScrollPane;
+
 import java.awt.event.ActionListener;
-import java.awt.geom.Ellipse2D;
+
 import java.util.ArrayList;
 import java.util.Hashtable;
 
-import javax.swing.GroupLayout;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -25,19 +25,15 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 import javax.swing.JTree;
-import javax.swing.SpringLayout;
+
 import javax.swing.SwingConstants;
 import javax.swing.tree.DefaultMutableTreeNode;
 
-import Objet_base.Cercle;
+
 import Objet_base.Objet_Geometrique;
 import P2D.Point2D;
 import P2D.Vecteur2D;
 import java.awt.Font;
-import java.awt.Graphics;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 public class Cadre extends JFrame{
 	/**

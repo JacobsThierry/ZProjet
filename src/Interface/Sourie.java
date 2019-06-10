@@ -10,6 +10,7 @@ import Objet_base.Arc;
 import Objet_base.Cercle;
 import Objet_base.Ellipse;
 import Objet_base.Losange;
+import Objet_base.MultiCercle;
 import Objet_base.MultiEllipse;
 import Objet_base.MultiRectangle;
 import Objet_base.Multisegment;
@@ -52,7 +53,7 @@ public class Sourie  implements MouseListener, MouseMotionListener, KeyListener{
 	
 	public void reset(){
 		
-		if(ca.getMode()==13 || ca.getMode() == 12) {	
+		if(ca.getMode()==13 || ca.getMode() == 12 || ca.getMode() == 11) {	
 			try {
 				ca.getArr().add(ca.getPreview().get(1));
 				ca.updateJTree();
@@ -271,8 +272,27 @@ public class Sourie  implements MouseListener, MouseMotionListener, KeyListener{
 					
 				}
 				
+				if(ca.getMode() == 11) {
+					if(this.mode == 0) {
+						this.POrigin = new Point2D(m.getX(), m.getY());
+					ca.getPreview().add(1,new MultiCercle(this.POrigin));
+					mode++;
+				}
+				else if(this.mode == 1) {
+					MultiCercle mc;
+					Cercle c;
+					mc = (MultiCercle) ca.getPreview().get(1);
+					c = (Cercle) ca.getPreview().get(0);
+					mc.add(c);
+					this.mode++;
+				}
+				else if(this.mode == 2) {
+					this.POrigin = new Point2D(m.getX(), m.getY());
+					mode = 1;
+				}}
+				
 				if(ca.getMode() == 13 || ca.getMode() == 12) {
-					System.out.println(ca.getMode());
+					
 					if(this.mode == 0) {
 						this.POrigin = new Point2D(m.getX(), m.getY());
 						
@@ -503,7 +523,7 @@ public class Sourie  implements MouseListener, MouseMotionListener, KeyListener{
 		
 
 		
-		if(ca.getMode()==8 && this.mode == 1) {
+		if( (ca.getMode()==8 || ca.getMode() == 11) && this.mode == 1) {
 			this.PExtremite.setX(m.getX());
 			this.PExtremite.setY(m.getY());
 			ca.getPreview().set(0,new Cercle(new Point2D(POrigin.getX(), POrigin.getY()), (int) Objet_de_base.dist(this.POrigin, this.PExtremite)));

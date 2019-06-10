@@ -113,6 +113,10 @@ public class listn  extends JComponent implements ActionListener {
 			ca.setMode(10);
 			ca.getLabel().setText("Mode: Elipse");
 		}
+		if(source == ca.getB_multicercle()) {
+			ca.setMode(11);
+			ca.getLabel().setText("Mode: MultiCercle");
+		}
 		if(source == ca.getB_multielipse()) {
 			ca.setMode(12);
 			ca.getLabel().setText("Mode: MultiElipse");
