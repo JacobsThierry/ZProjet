@@ -99,4 +99,12 @@ public class MultiCercle extends Objet_de_base{
 		}
 		
 	}
+	public String toString(){
+		String segm="";
+		for(int i=0;i<arr.size();i++){
+			segm=segm+arr.get(i).toString2();
+		}
+		return "11 "+this.getPOrigine().toString2()+this.getArr().size()+" "+segm;
+		
+	}
 }
