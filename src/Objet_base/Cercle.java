@@ -1,5 +1,6 @@
 package Objet_base;
 import java.awt.Graphics;
+import java.text.DecimalFormat;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 
@@ -72,7 +73,11 @@ public DefaultMutableTreeNode getNode(String nom) {
 	
 }
 	public String toString(){
+		
 	return "8 "+this.getPOrigine().getX()+" "+this.getPOrigine().getY()+" "+this.getRayon();
 }
+	public String toString2(){
+		return this.getPOrigine().getX()+" "+this.getPOrigine().getY()+" "+this.getRayon()+" ";
+	}
 
 }
