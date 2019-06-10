@@ -5,6 +5,7 @@ package Objet_base;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
+import java.text.DecimalFormat;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 
@@ -81,6 +82,7 @@ public void deplacer(Vecteur2D v) {
 @Override
 public boolean isIn(Point2D p) {
 	Rectangle r = new Rectangle(this.getP1(), this.getP2(), this.getP3(), this.getP4());
+
 	return r.isIn(p);
 	
 }
@@ -107,7 +109,13 @@ public DefaultMutableTreeNode getNode() {
 }
 
 public String toString() {
-	return "10 "+this.getPOrigine().getX()+" "+this.getPOrigine().getY()+" "+this.getP1().getX()+" "+this.getP1().getY()+" "+this.getP2().getX()+" "+this.getP2().getY()+" "+this.getP3().getX()+" "+this.getP3().getY()+" "+this.P4.getX()+" "+this.P4.getY()+" "+this.angle;
+	DecimalFormat df = new java.text.DecimalFormat("0.##");
+	return "10 "+this.getPOrigine().getX()+" "+this.getPOrigine().getY()+" "+this.getP1().getX()+" "+this.getP1().getY()+" "+this.getP2().getX()+" "+this.getP2().getY()+" "+this.getP3().getX()+" "+this.getP3().getY()+" "+this.P4.getX()+" "+this.P4.getY()+" "+df.format(this.angle);
+
+}
+public String toString2() {
+	DecimalFormat df = new java.text.DecimalFormat("0.##");
+	return this.getPOrigine().getX()+" "+this.getPOrigine().getY()+" "+this.getP1().getX()+" "+this.getP1().getY()+" "+this.getP2().getX()+" "+this.getP2().getY()+" "+this.getP3().getX()+" "+this.getP3().getY()+" "+this.P4.getX()+" "+this.P4.getY()+" "+df.format(this.angle)+" ";
 
 }
 }
