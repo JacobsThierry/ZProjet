@@ -18,6 +18,8 @@ import javax.swing.tree.TreePath;
 import Objet_base.Cercle;
 import Objet_base.Ellipse;
 import Objet_base.Losange;
+import Objet_base.MultiCercle;
+import Objet_base.MultiEllipse;
 import Objet_base.MultiRectangle;
 import Objet_base.Multisegment;
 import Objet_base.Quadrangle;
@@ -186,6 +188,8 @@ public class listn  extends JComponent implements ActionListener {
 			ca.getLabel().setText("Mode: ");
 			ArrayList<Rectangle> arr2 = new ArrayList<Rectangle>();
 			ArrayList<Segment> arr = new ArrayList<Segment>();
+			ArrayList<Ellipse> arr3 = new ArrayList<Ellipse>();
+			ArrayList<Cercle> arr4 = new ArrayList<Cercle>();
 			 try
 		        {
 				 
@@ -195,7 +199,7 @@ public class listn  extends JComponent implements ActionListener {
 				 chooser.setFileFilter(filter);
 				    int returnVal = chooser.showOpenDialog(getParent()); 
 				    if(returnVal == JFileChooser.APPROVE_OPTION) {
-				       System.out.println("Fichier chargÃ© : " +
+				       System.out.println("Fichier charge : " +
 				            chooser.getSelectedFile().getName());
 				    }
 			 file =chooser.getSelectedFile();
@@ -233,11 +237,28 @@ public class listn  extends JComponent implements ActionListener {
 		        	 ca.getArr().add(new Cercle(new Point2D(sc.nextInt(),sc.nextInt()),sc.nextInt()));
 		         }
 		         if(id==10) {
-		        	 ca.getArr().add(new Ellipse(new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),sc.nextInt()));
+		        	 ca.getArr().add(new Ellipse(new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),sc.nextDouble()));
 		         }
-		         if(id==13){	       
+		         if(id==11){	       
 			        	
 			        	Point2D POrigin = new Point2D(sc.nextInt(),sc.nextInt());
+			        	int v=sc.nextInt();
+			        	for(int i=0;i<v;i++){
+			        			arr4.add(new Cercle(new Point2D(sc.nextInt(),sc.nextInt()),sc.nextInt()));}
+			        	 ca.getArr().add(new MultiCercle(POrigin,arr4));
+					 }
+		         
+		         if(id==12){	       
+			        	
+			        	 Point2D POrigin = new Point2D(sc.nextInt(),sc.nextInt());
+				        	int v=sc.nextInt();
+				        	for(int i=0;i<v;i++){
+				        			arr3.add(new Ellipse(new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),sc.nextDouble()));}
+				        	 ca.getArr().add(new MultiEllipse(POrigin,arr3));
+					 }
+		         if(id==13){	       
+			        	
+		        		Point2D POrigin = new Point2D(sc.nextInt(),sc.nextInt());
 			        	int v=sc.nextInt();
 			        	for(int i=0;i<v;i++){
 			        			arr2.add(new Rectangle(new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt())));}
