@@ -99,5 +99,13 @@ public class MultiEllipse extends Objet_de_base{
 		}
 		
 	}
+	public String toString(){
+		String segm="";
+		for(int i=0;i<arr.size();i++){
+			segm=segm+arr.get(i).toString2();
+		}
+		return "12 "+this.getPOrigine().toString2()+this.getArr().size()+" "+segm;
+		
+	}
 
 }
