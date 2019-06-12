@@ -4,12 +4,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.swing.JComponent;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
@@ -36,6 +39,8 @@ public class listn  extends JComponent implements ActionListener {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Cadre ca;
+	String filename;
+	private JTextField dir = new JTextField();
 	File file = new File("save.txt");
 
     PrintWriter printWriter = null;
@@ -65,12 +70,12 @@ public class listn  extends JComponent implements ActionListener {
 		
 		if(source == ca.getB_deplace() ) {
 			ca.setMode(0);
-			ca.getLabel().setText("Mode: DÃ©placer");
+			ca.getLabel().setText("Mode: DÃƒÂ©placer");
 		}
 		
 		if(source == ca.getB_quadri()) {
 			ca.setMode(1);
-			ca.getLabel().setText("Mode: QuadrilatÃ¨re");
+			ca.getLabel().setText("Mode: QuadrilatÃƒÂ¨re");
 		}
 		
 		if(source== ca.getB_rect()) {
@@ -159,10 +164,32 @@ public class listn  extends JComponent implements ActionListener {
 		}
 		if(source==ca.getB_save()) {
 		ca.getLabel().setText("Mode: ");
+		  JFileChooser c = new JFileChooser();
+	      // Demonstrate "Save" dialog:
+			 FileNameExtensionFilter filter = new FileNameExtensionFilter(
+				        ".txt",  "txt");
+			 c.setFileFilter(filter);
+	      int rVal = c.showSaveDialog(getParent());
+	      if (rVal == JFileChooser.APPROVE_OPTION) {
+	        filename = c.getSelectedFile().getAbsolutePath();
+	        dir.setText(c.getCurrentDirectory().toString());
+	      }
+	     
+	      filename=filename+".txt";
+     	 File save  = new File(filename);
+     	 try{
+     		 save.createNewFile();
+     	 }
+     	 catch(IOException e1)
+     	 {
+     		 e1.printStackTrace();
+     	 }
 
 	        try
 	        {
-	            printWriter = new PrintWriter(file);
+	        
+
+	            printWriter = new PrintWriter(filename);
 	           for(int i=0;i<ca.getArr().size();i++) {
 	        	   printWriter.println(ca.getArr().get(i));
 	           }
@@ -178,9 +205,10 @@ public class listn  extends JComponent implements ActionListener {
 	                printWriter.close();
 	            }
 	        }
+	}
 		
 		
-		}
+		
 		
 		      
 		
@@ -237,7 +265,7 @@ public class listn  extends JComponent implements ActionListener {
 		        	 ca.getArr().add(new Cercle(new Point2D(sc.nextInt(),sc.nextInt()),sc.nextInt()));
 		         }
 		         if(id==10) {
-		        	 ca.getArr().add(new Ellipse(new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt())));
+		        	 ca.getArr().add(new Ellipse(new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()));
 		         }
 		         if(id==11){	       
 			        	
@@ -254,7 +282,7 @@ public class listn  extends JComponent implements ActionListener {
 				        	int v=sc.nextInt();
 				        	for(int i=0;i<v;i++){
 				        			arr3.add(new Ellipse(new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt())));}
-				        	 ca.getArr().add(new MultiEllipse(POrigin));
+				        	 ca.getArr().add(new MultiEllipse(POrigin,arr3));
 					 }
 		         if(id==13){	       
 			        	
