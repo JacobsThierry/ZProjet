@@ -413,12 +413,15 @@ public class Sourie  implements MouseListener, MouseMotionListener, KeyListener{
 								
 				
 			}else if(this.mode == 2 && (ca.getMode() == 10 || ca.getMode() == 12)) {
-				int dist = Objet_de_base.dist(new Segment(this.POrigin, this.P1).getMilieux(), new Point2D(m.getX(), m.getY()) )*2;
-				Point2D pts = new Point2D(m.getX(), m.getY());
-				Ellipse e1 = new Ellipse(new Segment(this.POrigin, this.P1), Objet_de_base.dist(new Segment(this.POrigin, this.P1).getMilieux(), new Point2D(m.getX(), m.getY()) )*2);
-				Ellipse e2 = new Ellipse(new Segment(this.P1, this.POrigin), Objet_de_base.dist(new Segment(this.POrigin, this.P1).getMilieux(), new Point2D(m.getX(), m.getY()) )*2);
 				
-				if(Objet_de_base.dist(pts, e1.getP3()) < Objet_de_base.dist(pts, e2.getP3())) {
+				Point2D pts = new Point2D(m.getX(), m.getY());
+				//Ellipse e1 = new Ellipse(new Segment(this.POrigin, this.P1), (new Triangle(this.POrigin, this.P1, pts).getHauteur() ) );
+				//Ellipse e2 = new Ellipse(new Segment(this.P1, this.POrigin), (new Triangle(this.POrigin, pts,this.P1).getHauteur() ));
+				
+				Ellipse e1 = new Ellipse(this.POrigin, this.P1, (new Triangle(this.POrigin, this.P1, pts).getHauteur()));
+				Ellipse e2 = new Ellipse(this.POrigin, this.P1, -(new Triangle(this.POrigin, this.P1, pts).getHauteur()));
+				
+				if(Objet_de_base.dist(pts, e1.getP4()) < Objet_de_base.dist(pts, e2.getP4())) {
 					ca.getPreview().set(0, e1);
 				}
 				else {
