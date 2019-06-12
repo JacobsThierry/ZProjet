@@ -8,27 +8,27 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import P2D.Point2D;
 import P2D.Vecteur2D;
 
-public class MultiRectangle extends Objet_de_base{
+public class MultiEllipse extends Objet_de_base{
 	
 	
 
-	private ArrayList<Rectangle> arr;
+	private ArrayList<Ellipse> arr;
 	
 	
 
-	public MultiRectangle(Point2D pOrigine, ArrayList<Rectangle> arr) {
+	public MultiEllipse(Point2D pOrigine, ArrayList<Ellipse> arr) {
 		super(pOrigine);
 		this.arr = arr;
 	}
 	
-	public MultiRectangle(Point2D pOrigine) {
+	public MultiEllipse(Point2D pOrigine) {
 		super(pOrigine);
-		this.arr = new ArrayList<Rectangle>();
+		this.arr = new ArrayList<Ellipse>();
 	}
 	
-	public MultiRectangle(Rectangle rect) {
+	public MultiEllipse(Ellipse rect) {
 		super(rect.getPOrigine().dupliquer());
-		this.arr = new ArrayList<Rectangle>();
+		this.arr = new ArrayList<Ellipse>();
 		arr.add(rect);
 	}
 
@@ -41,7 +41,7 @@ public class MultiRectangle extends Objet_de_base{
 		
 	}
 	
-	public void add(Rectangle r) {
+	public void add(Ellipse r) {
 		this.arr.add(r);
 	}
 
@@ -56,39 +56,39 @@ public class MultiRectangle extends Objet_de_base{
 	}
 
 	@Override
-	public MultiRectangle dupliquer() {
-		ArrayList<Rectangle> arr = new ArrayList<Rectangle>();  
+	public MultiEllipse dupliquer() {
+		ArrayList<Ellipse> arr = new ArrayList<Ellipse>();  
 		for(int i = 0 ; i < this.arr.size(); i++) {
 			arr.add(this.arr.get(i).dupliquer());
 		}
-		return new MultiRectangle(this.getPOrigine().dupliquer(), arr);
+		return new MultiEllipse(this.getPOrigine().dupliquer(), arr);
 	}
 
 	@Override
 	public Objet_Geometrique appliquerVecteur(Vecteur2D v) {
 		
-		MultiRectangle arra = this.dupliquer();
+		MultiEllipse arra = this.dupliquer();
 		arra.deplacer(v);
 		return arra;
 	}
 
 	@Override
 	public DefaultMutableTreeNode getNode() {
-		DefaultMutableTreeNode node = new DefaultMutableTreeNode("Multi-Rectangle");
+		DefaultMutableTreeNode node = new DefaultMutableTreeNode("Multi-Ellipse");
 		node.add(this.getPOrigine().getNode("Po"));
 		
 		for(int i=0; i< this.arr.size(); i++) {
-			node.add(arr.get(i).getNode("Rectangle " + (i+1)));
+			node.add(arr.get(i).getNode("Ellipse " + (i+1)));
 		}
 		return node;
 		
 	}
 
-	public ArrayList<Rectangle> getArr() {
+	public ArrayList<Ellipse> getArr() {
 		return arr;
 	}
 
-	public void setArr(ArrayList<Rectangle> arr) {
+	public void setArr(ArrayList<Ellipse> arr) {
 		this.arr = arr;
 	}
 

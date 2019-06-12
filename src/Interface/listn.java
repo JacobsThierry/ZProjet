@@ -237,7 +237,7 @@ public class listn  extends JComponent implements ActionListener {
 		        	 ca.getArr().add(new Cercle(new Point2D(sc.nextInt(),sc.nextInt()),sc.nextInt()));
 		         }
 		         if(id==10) {
-		        	 ca.getArr().add(new Ellipse(new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),sc.nextDouble()));
+		        	 ca.getArr().add(new Ellipse(new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt())));
 		         }
 		         if(id==11){	       
 			        	
@@ -253,8 +253,8 @@ public class listn  extends JComponent implements ActionListener {
 			        	 Point2D POrigin = new Point2D(sc.nextInt(),sc.nextInt());
 				        	int v=sc.nextInt();
 				        	for(int i=0;i<v;i++){
-				        			arr3.add(new Ellipse(new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),sc.nextDouble()));}
-				        	 ca.getArr().add(new MultiEllipse(POrigin,arr3));
+				        			arr3.add(new Ellipse(new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt())));}
+				        	 ca.getArr().add(new MultiEllipse(POrigin));
 					 }
 		         if(id==13){	       
 			        	

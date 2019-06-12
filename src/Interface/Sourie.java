@@ -413,7 +413,7 @@ public class Sourie  implements MouseListener, MouseMotionListener, KeyListener{
 								
 				
 			}else if(this.mode == 2 && (ca.getMode() == 10 || ca.getMode() == 12)) {
-				ca.getPreview().set(0, new Ellipse(new Segment(this.POrigin, this.P1) , (new Triangle(this.POrigin, this.P1, new Point2D(m.getX(), m.getY())) ).getHauteur(), ((new Segment(this.POrigin, this.P1).getAngle())) ));
+				ca.getPreview().set(0, new Ellipse(new Segment(this.POrigin, this.P1) , (new Triangle(this.POrigin, this.P1, new Point2D(m.getX(), m.getY())) ).getHauteur() ));
 			}
 			
 			
