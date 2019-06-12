@@ -413,7 +413,17 @@ public class Sourie  implements MouseListener, MouseMotionListener, KeyListener{
 								
 				
 			}else if(this.mode == 2 && (ca.getMode() == 10 || ca.getMode() == 12)) {
-				ca.getPreview().set(0, new Ellipse(new Segment(this.POrigin, this.P1) , (new Triangle(this.POrigin, this.P1, new Point2D(m.getX(), m.getY())) ).getHauteur() ));
+				int dist = Objet_de_base.dist(new Segment(this.POrigin, this.P1).getMilieux(), new Point2D(m.getX(), m.getY()) )*2;
+				Point2D pts = new Point2D(m.getX(), m.getY());
+				Ellipse e1 = new Ellipse(new Segment(this.POrigin, this.P1), Objet_de_base.dist(new Segment(this.POrigin, this.P1).getMilieux(), new Point2D(m.getX(), m.getY()) )*2);
+				Ellipse e2 = new Ellipse(new Segment(this.P1, this.POrigin), Objet_de_base.dist(new Segment(this.POrigin, this.P1).getMilieux(), new Point2D(m.getX(), m.getY()) )*2);
+				
+				if(Objet_de_base.dist(pts, e1.getP3()) < Objet_de_base.dist(pts, e2.getP3())) {
+					ca.getPreview().set(0, e1);
+				}
+				else {
+					ca.getPreview().set(0, e2);
+				}
 			}
 			
 			

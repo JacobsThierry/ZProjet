@@ -24,8 +24,8 @@ public class Ellipse extends Rectangle {
 	}
 
 	public Ellipse(Segment s, int longeur) {
-		super(s.getMilieux(), s.getPOrigine(), new Segment( s.getMilieux(), s.getAngle() + (Math.PI/2), longeur ).getPOrigine(), s.getP1());
-		Segment s2 = new Segment( s.getMilieux(), (s.getAngle() + (Math.PI/2)), longeur );
+		super(s.getMilieux(), s.getPOrigine(), new Segment( s.getMilieux(), s.getAngle(), longeur ).getPOrigine(), s.getP1());
+		Segment s2 = new Segment( s.getMilieux(), (s.getAngle()), longeur);
 		this.setP4( s2.getP1());
 	}
 
@@ -36,7 +36,7 @@ public class Ellipse extends Rectangle {
 @Override
 public void afficher(Graphics g) {
 	AffineTransform old = ((Graphics2D) g).getTransform();
-	 ((Graphics2D) g).rotate((new Segment(this.getPOrigine(), this.getP1()).getAngle()) ,this.getPOrigine().getX()+Math.abs(Objet_de_base.dist(this.getP2(),this.getP4()))/2,this.getPOrigine().getY()+Objet_de_base.dist(this.getPOrigine(), this.getP3())/2);
+	 ((Graphics2D) g).rotate(((new Segment(this.getP1(), this.getP3()).getAngle()) ), this.getPOrigine().getX(), this.getPOrigine().getY() );
 	g.drawOval(this.getP1().getX(),this.getP1().getY(),Math.abs(Objet_de_base.dist(this.getP2(),this.getP4())),Objet_de_base.dist(this.getPOrigine(), this.getP3()));
 	((Graphics2D) g).setTransform(old);
 	
