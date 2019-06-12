@@ -4,12 +4,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.swing.JComponent;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
@@ -34,8 +37,10 @@ public class listn  extends JComponent implements ActionListener {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+		private static final long serialVersionUID = 1L;
 	private Cadre ca;
+	String filename;
+	private JTextField dir = new JTextField();
 	File file = new File("save.txt");
 
     PrintWriter printWriter = null;
@@ -159,10 +164,30 @@ public class listn  extends JComponent implements ActionListener {
 		}
 		if(source==ca.getB_save()) {
 		ca.getLabel().setText("Mode: ");
+			JFileChooser c = new JFileChooser();
+	      // Demonstrate "Save" dialog:
+			 FileNameExtensionFilter filter = new FileNameExtensionFilter(
+				        ".txt",  "txt");
+			 c.setFileFilter(filter);
+	      int rVal = c.showSaveDialog(getParent());
+	      if (rVal == JFileChooser.APPROVE_OPTION) {
+	        filename = c.getSelectedFile().getAbsolutePath();
+	        dir.setText(c.getCurrentDirectory().toString());
+	      }
+	     
+	      filename=filename+".txt";
+     	 File save  = new File(filename);
+     	 try{
+     		 save.createNewFile();
+     	 }
+     	 catch(IOException e1)
+     	 {
+     		 e1.printStackTrace();
+     	 }
 
 	        try
 	        {
-	            printWriter = new PrintWriter(file);
+	            printWriter = new PrintWriter(filename);
 	           for(int i=0;i<ca.getArr().size();i++) {
 	        	   printWriter.println(ca.getArr().get(i));
 	           }
@@ -293,4 +318,3 @@ public class listn  extends JComponent implements ActionListener {
 
 		}
 	
-
