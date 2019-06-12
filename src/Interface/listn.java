@@ -37,7 +37,7 @@ public class listn  extends JComponent implements ActionListener {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+		private static final long serialVersionUID = 1L;
 	private Cadre ca;
 	String filename;
 	private JTextField dir = new JTextField();
@@ -70,12 +70,12 @@ public class listn  extends JComponent implements ActionListener {
 		
 		if(source == ca.getB_deplace() ) {
 			ca.setMode(0);
-			ca.getLabel().setText("Mode: DÃƒÂ©placer");
+			ca.getLabel().setText("Mode: DÃ©placer");
 		}
 		
 		if(source == ca.getB_quadri()) {
 			ca.setMode(1);
-			ca.getLabel().setText("Mode: QuadrilatÃƒÂ¨re");
+			ca.getLabel().setText("Mode: QuadrilatÃ¨re");
 		}
 		
 		if(source== ca.getB_rect()) {
@@ -164,7 +164,7 @@ public class listn  extends JComponent implements ActionListener {
 		}
 		if(source==ca.getB_save()) {
 		ca.getLabel().setText("Mode: ");
-		  JFileChooser c = new JFileChooser();
+			JFileChooser c = new JFileChooser();
 	      // Demonstrate "Save" dialog:
 			 FileNameExtensionFilter filter = new FileNameExtensionFilter(
 				        ".txt",  "txt");
@@ -187,8 +187,6 @@ public class listn  extends JComponent implements ActionListener {
 
 	        try
 	        {
-	        
-
 	            printWriter = new PrintWriter(filename);
 	           for(int i=0;i<ca.getArr().size();i++) {
 	        	   printWriter.println(ca.getArr().get(i));
@@ -205,10 +203,9 @@ public class listn  extends JComponent implements ActionListener {
 	                printWriter.close();
 	            }
 	        }
-	}
 		
 		
-		
+		}
 		
 		      
 		
@@ -265,7 +262,7 @@ public class listn  extends JComponent implements ActionListener {
 		        	 ca.getArr().add(new Cercle(new Point2D(sc.nextInt(),sc.nextInt()),sc.nextInt()));
 		         }
 		         if(id==10) {
-		        	 ca.getArr().add(new Ellipse(new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()));
+		        	 ca.getArr().add(new Ellipse(new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt())));
 		         }
 		         if(id==11){	       
 			        	
@@ -282,7 +279,7 @@ public class listn  extends JComponent implements ActionListener {
 				        	int v=sc.nextInt();
 				        	for(int i=0;i<v;i++){
 				        			arr3.add(new Ellipse(new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt()),new Point2D(sc.nextInt(),sc.nextInt())));}
-				        	 ca.getArr().add(new MultiEllipse(POrigin,arr3));
+				        	 ca.getArr().add(new MultiEllipse(POrigin));
 					 }
 		         if(id==13){	       
 			        	
@@ -321,4 +318,3 @@ public class listn  extends JComponent implements ActionListener {
 
 		}
 	
-
